@@ -24,7 +24,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
   }
   else {
-      req.sendStatus(403)
+      res.sendStatus(403)
   }
 });
 

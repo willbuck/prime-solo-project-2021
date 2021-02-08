@@ -39,9 +39,9 @@ export default function AdminKoan() {
         }
     }
 
-    useEffect(()=>{
-        getKoans();
-    }, [])
+    // useEffect(()=>{
+    //     getKoans();
+    // }, [])
 
     return (
         <div>
