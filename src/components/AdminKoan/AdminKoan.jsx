@@ -12,7 +12,10 @@ import { useHistory } from 'react-router-dom'
 
 export default function AdminKoan() {
 
+    //state to store user in put
     const [koan, setKoan] = useState('');
+    //reducer with all koans
+    const koanList = useSelector(store=>store.koan)
 
     const history = useHistory;
     const dispatch = useDispatch();
@@ -23,6 +26,8 @@ export default function AdminKoan() {
     }
 
     //buttons send user back on to dashboard OR post
+
+    //ADD DELETE ROUTE
     const handleClick = (type) => {
         switch(type){
             case 'back':
