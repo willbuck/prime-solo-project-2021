@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
+import UserPage from '../UserPage/UserPage'
 import {useSelector} from 'react-redux';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -33,6 +34,11 @@ function ProtectedAdmin(props) {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
     ComponentToShow = ComponentToProtect;
+  }
+  else if (user.id) {
+    // if the user is logged in (only logged in users have ids)
+    // show the component that is protected
+    ComponentToShow = UserPage;
   } else {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage

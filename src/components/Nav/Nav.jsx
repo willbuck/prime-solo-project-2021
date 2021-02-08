@@ -12,7 +12,13 @@ function Nav() {
     text: 'Login / Register',
   };
 
-  if (user.id != null) {
+  if (user.id != null && user.is_admin){
+    loginLinkData.path = '/admin';
+    loginLinkData.text = 'Home';
+
+  }
+  
+  else if (user.id != null) {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
   }
