@@ -16,7 +16,7 @@ function* getKoans() {
 //add new koan
 function* postKoan(action) {
     try{
-        console.log('in postKoan with', action.payload)
+        console.log('in postKoan saga with', action.payload)
         yield axios.post('/api/koan', action.payload)
         yield put({type: 'GET_KOANS'})
     } catch(error){
@@ -37,7 +37,7 @@ function* deleteKoan(action) {
 
 function* koanSaga() {
     yield takeLatest('GET_KOANS', getKoans);
-    yield takeLatest('POST_KOANS', postKoan);
+    yield takeLatest('POST_KOAN', postKoan);
     yield takeLatest('DELETE_KOAN', deleteKoan);
   }
 
