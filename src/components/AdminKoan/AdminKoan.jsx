@@ -17,7 +17,7 @@ export default function AdminKoan() {
     //reducer with all koans
     const koanList = useSelector(store=>store.koan)
 
-    const history = useHistory;
+    const history = useHistory();
     const dispatch = useDispatch();
 
     //dispatch GET to koan.saga.js

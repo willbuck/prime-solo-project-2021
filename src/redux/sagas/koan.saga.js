@@ -6,7 +6,7 @@ function* getKoans() {
     try{
         console.log('in getKoans')
         const response = yield axios.get('/api/koan');
-        console.log(response);
+        console.log('in getKoans server response', response.data);
         yield put({type: 'SET_KOANS', payload: response.data})
     } catch{
         console.log('error in getKoans')

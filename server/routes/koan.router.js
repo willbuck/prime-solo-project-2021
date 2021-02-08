@@ -6,8 +6,26 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware')
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
+  if(req.user.is_admin){
+    console.log('in /api/koan')
+    const queryText = `
+        SELECT * FROM "koan"
+    `
+    pool.query(queryText).then((response)=>{
+        console.log('success in /api/koan', response);
+        res.send(response.rows)
+    }).catch((error)=>{
+        console.log('error in /api/koan')
+        console.log(error)
+        res.sendStatus(500);
+    })
+
+  }
+  else {
+      req.sendStatus(403)
+  }
 });
 
 /**
