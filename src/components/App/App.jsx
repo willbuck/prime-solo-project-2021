@@ -20,6 +20,10 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+//my components
+import ProtectedAdmin from '../ProtectedAdmin/ProtectedAdmin';
+import AdminHome from '../AdminHome/AdminHome';
+
 import './App.css';
 
 function App() {
@@ -50,6 +54,7 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -101,6 +106,12 @@ function App() {
           >
             <LandingPage />
           </ProtectedRoute>
+          <ProtectedAdmin
+            exact
+            path="/admin"
+          >
+            <AdminHome />
+          </ProtectedAdmin>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
