@@ -23,6 +23,9 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 //my components
 import ProtectedAdmin from '../ProtectedAdmin/ProtectedAdmin';
 import AdminHome from '../AdminHome/AdminHome';
+import AdminEvent from '../AdminEvent/AdminEvent';
+import AdminKoan from '../AdminKoan/AdminKoan';
+import AdminRecords from '../AdminRecords/AdminRecords';
 
 import './App.css';
 
@@ -115,21 +118,21 @@ function App() {
           </ProtectedAdmin>
           <ProtectedAdmin
             exact
-            path="/admin"
+            path="/admin/event"
           >
-            <AdminHome />
+            <AdminEvent />
           </ProtectedAdmin>
           <ProtectedAdmin
             exact
-            path="/admin"
+            path="/admin/koan"
           >
-            <AdminHome />
+            <AdminKoan />
           </ProtectedAdmin>
           <ProtectedAdmin
             exact
-            path="/admin"
+            path="/admin/records"
           >
-            <AdminHome />
+            <AdminRecords />
           </ProtectedAdmin>
 
           {/* If none of the other routes matched, we will show a 404. */}

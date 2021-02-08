@@ -5,9 +5,23 @@ export default function AdminHome() {
     const history = useHistory()
 
     //DRY function for routing
-    const handleClick = () =>{
-
+    const handleClick = (input) =>{
+        switch(input){
+            case 'event':
+                history.push('/admin/event');
+                break;
+            case 'koan':
+                history.push('/admin/koan');
+                break;
+            case 'records':
+                history.push('/admin/records');
+                break;
+            default:
+                return;
+        }
     }
+
+    
     return (
         <div>
             <h2>Admin Dashboard</h2>
@@ -17,7 +31,7 @@ export default function AdminHome() {
                         Add/Edit Events
                     </td>
                     <td>
-                        <button onClick={()=>handleClick()}>Go</button>
+                        <button onClick={()=>handleClick('event')}>Go</button>
                     </td>
                 </tr>
                 <tr>
@@ -25,7 +39,7 @@ export default function AdminHome() {
                         Add/Edit Koans
                     </td>
                     <td>
-                        <button onClick={()=>handleClick()}>Go</button>
+                        <button onClick={()=>handleClick('koan')}>Go</button>
                     </td>
                 </tr>
                 <tr>
@@ -33,7 +47,7 @@ export default function AdminHome() {
                         View Records
                     </td>
                     <td>
-                        <button onClick={()=>handleClick()}>View</button>
+                        <button onClick={()=>handleClick('records')}>View</button>
                     </td>
                 </tr>
             </table>
