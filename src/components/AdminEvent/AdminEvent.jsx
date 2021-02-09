@@ -10,28 +10,24 @@ export default function AdminEvent() {
 
     const [dateTime, setDateTime] = useState(new Date())
     const [durationTime, setDurationTime] = useState(0)
-    const [eventDetails, setEventDetails] = useState({
-        date: '',
-        start: '',
-        duration: '',
-    })
 
     const handleClick = (dateChecker, timeChecker, event) => {
+        //still rough, pare down after GET/.map showing up right
         event.preventDefault();
-        console.log(dateChecker)
+
         const dateOfEvent = new Date(dateChecker)
+
         const timeStart =
             ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
             (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
-        console.log('start:', dateOfEvent)
-        console.log('start to string:', dateOfEvent.toString())
-        console.log('start to ISO:', dateOfEvent.toISOString())
-        console.log('start to Locale string:', dateOfEvent.toLocaleString())
-        setEventDetails({
-            date: dateOfEvent,
+
+        const newEvent = {
+            date: dateChecker,
             start: timeStart,
             duration: timeChecker,
-        })
+        }
+        //sends new event to event.saga.js
+        dispatch({type: 'POST_EVENT', payload: newEvent})
     }
 
 
@@ -39,7 +35,6 @@ export default function AdminEvent() {
     return (
         <div>
             <p></p>
-            {JSON.stringify(eventDetails)}
             <form>
                 <label htmlFor="start">Start date:</label>
 
