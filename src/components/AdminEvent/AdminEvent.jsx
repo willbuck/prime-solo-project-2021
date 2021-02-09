@@ -8,11 +8,14 @@ export default function AdminEvent() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [date, setDate] = useState(new Date())
+    const [dateTime, setDateTime] = useState(new Date())
 
     const checkCalendar = (checker, event) => {
         event.preventDefault();
         console.log(checker)
+        const start = new Date(checker)
+        console.log('start:', start)
+        console.log('start to string:', start.toLocaleString())
     }
 
 
@@ -24,15 +27,14 @@ export default function AdminEvent() {
                 <label htmlFor="start">Start date:</label>
 
                 <input
-                    type="date"
+                    type="datetime-local"
                     id="start"
-                    name="trip-start"
-                    value="2018-07-22"
+                    name="start"
                     min={new Date()}
                     max="2040-12-31"
-                    value={date}
-                    onChange={(event)=>setDate(event.target.value)}/>
-                <button onClick={(event)=>checkCalendar(date, event)}>Submit</button>
+                    value={dateTime}
+                    onChange={(event)=>setDateTime(event.target.value)}/>
+                <button onClick={(event)=>checkCalendar(dateTime, event)}>Submit</button>
             </form>
         </div>
     )
