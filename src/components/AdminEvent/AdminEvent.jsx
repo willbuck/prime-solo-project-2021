@@ -8,7 +8,7 @@ export default function AdminEvent() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [date, setDate] = useState(1111-11-11)
+    const [date, setDate] = useState(new Date())
 
     const checkCalendar = (checker, event) => {
         event.preventDefault();
