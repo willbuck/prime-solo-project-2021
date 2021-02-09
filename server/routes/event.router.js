@@ -8,6 +8,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
             SELECT "date", "duration" from "event"
+            ORDER BY "date" DESC
         `
     pool.query(queryText).then((response)=>{
         console.log('response from admin getEvent', response.rows);
@@ -17,7 +18,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     })
     }
-  res.sendStatus(403);
+  else{
+      res.sendStatus(403)
+  };
 });
 
 /**
@@ -26,6 +29,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin){
         console.log(req.body)
+        const insertText = [req.body.date, req.body.start, req.body.duration];
+        const queryText = `
+            INSERT INTO "event" ("date", "start", "duration")
+            VALUES ($1, $2, $3);
+        `
+        pool.query(queryText, insertText)
+        .then((response)=>{
+            console.log('response from eventPost', response);
+            res.sendStatus(200);
+        }).catch((error)=>{
+            console.log('error in eventPost', error);
+            res.sendStatus(500);
+        })
     }
 });
 
