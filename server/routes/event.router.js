@@ -10,22 +10,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             SELECT "id", "human_readable", "date", "duration" from "event"
             ORDER BY "date" DESC
         `
-    pool.query(queryText).then((response)=>{
-        console.log('response from admin getEvent', response.rows);
-        res.send(response.rows);
-    }).catch((error)=>{
-        console.log('error from admin getEvents', error);
-        res.sendStatus(500);
-    })
+        pool.query(queryText).then((response) => {
+            console.log('response from admin getEvent', response.rows);
+            res.send(response.rows);
+        }).catch((error) => {
+            console.log('error from admin getEvents', error);
+            res.sendStatus(500);
+        })
     }
-  else{
-      res.sendStatus(403)
-  };
+    else {
+        res.sendStatus(403)
+    };
 });
 
 //adds new event to DB
 router.post('/', rejectUnauthenticated, (req, res) => {
-    if (req.user.is_admin){
+    if (req.user.is_admin) {
         console.log(req.body)
         const insertText = [req.body.date, req.body.start, req.body.duration, req.body.human_readable];
         const queryText = `
@@ -33,13 +33,13 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             VALUES ($1, $2, $3, $4);
         `
         pool.query(queryText, insertText)
-        .then((response)=>{
-            console.log('response from eventPost', response);
-            res.sendStatus(200);
-        }).catch((error)=>{
-            console.log('error in eventPost', error);
-            res.sendStatus(500);
-        })
+            .then((response) => {
+                console.log('response from eventPost', response);
+                res.sendStatus(201);
+            }).catch((error) => {
+                console.log('error in eventPost', error);
+                res.sendStatus(500);
+            })
     }
     else {
         res.sendStatus(403)
@@ -47,5 +47,24 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 //delete route to remove from db
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    if (req.user.is_admin) {
+        const id = [req.params.id];
+        const queryText = `
+        DELETE FROM "event"
+        WHERE "id" = $1;
+    `
+        pool.query(queryText, id).then((response) => {
+            console.log('response from deleteEvent', response);
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error in deleteEvent', error);
+            res.sendStatus(500)
+        })
+    }
+    else {
+        res.sendStatus(403);
+    }
+})
 
 module.exports = router;
