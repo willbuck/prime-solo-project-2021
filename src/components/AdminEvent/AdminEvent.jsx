@@ -4,69 +4,120 @@ import { useHistory } from 'react-router-dom'
 
 export default function AdminEvent() {
 
+    //reducer for events in DB, called on load and put on DOM
+    const eventList = useSelector(store=>store.event)
 
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [dateTime, setDateTime] = useState(new Date())
-    const [durationTime, setDurationTime] = useState(0)
-    const [eventDetails, setEventDetails] = useState({
-        date: '',
-        start: '',
-        duration: '',
-    })
+    //state to hold user input for date/time and duration
+    const [dateTime, setDateTime] = useState('')
+    const [duration, setDuration] = useState(0)
 
-    const handleClick = (dateChecker, timeChecker, event) => {
+    //handles form submit, packages data for DB
+    const handleClick = (eventDate, eventTime, event) => {
+        //still rough, pare down after GET/.map showing up right
         event.preventDefault();
-        console.log(dateChecker)
-        const dateOfEvent = new Date(dateChecker)
+        //form validation
+        if(!eventDate || !eventTime ){
+            alert('please enter all the event information')
+        }
+        //packages data and sends to DB
+        else{
+
+        const dateOfEvent = new Date(eventDate)
+
         const timeStart =
             ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
             (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
-        console.log('start:', dateOfEvent)
-        console.log('start to string:', dateOfEvent.toString())
-        console.log('start to ISO:', dateOfEvent.toISOString())
-        console.log('start to Locale string:', dateOfEvent.toLocaleString())
-        setEventDetails({
-            date: dateOfEvent,
+
+        //object for sever
+        const newEvent = {
+            date: eventDate,
+            human_readable: dateOfEvent.toDateString(),
             start: timeStart,
-            duration: timeChecker,
-        })
+            duration: eventTime,
+        }
+        //sends new event to event.saga.js, resets values
+        dispatch({type: 'POST_EVENT', payload: newEvent})
+        setDateTime('')
+        setDuration(0)
     }
+}
+
+//back to dashboard
+const handleBack = () => {
+    history.push('/admin')
+}
+
+//delete event from user view
+const handleDelete = (eventID) => {
+    console.log('in delete for ID', eventID)
+    dispatch({type: 'DELETE_EVENT', payload: eventID})
+}
+
+//loads events as page loads
+useEffect(()=>{
+    dispatch({type:'GET_EVENTS'})
+}, [])
 
 
 
     return (
         <div>
             <p></p>
-            {JSON.stringify(eventDetails)}
             <form>
                 <label htmlFor="start">Start date:</label>
 
                 <input
+                    required
                     type="datetime-local"
                     id="start"
                     name="start"
-                    min={new Date()}
-                    max="2040-12-31"
                     value={dateTime}
                     onChange={(event) => setDateTime(event.target.value)} />
 
                 <label htmlFor="duration">Duration:</label>
 
                 <select
+                    required
                     name="duration"
                     id="duration"
-                    value={durationTime}
-                    onChange={(event)=>setDurationTime(event.target.value)}>
+                    value={duration}
+                    onChange={(event)=>setDuration(event.target.value)}>
                     <option value={0} disabled>Minutes:</option>
                     <option value={15 * 60000}>15</option>
                     <option value={30 * 60000}>30</option>
                     <option value={45 * 60000}>45</option>
                     <option value={60 * 60000}>60</option>
                 </select>
-                <button onClick={(event) => handleClick(dateTime, durationTime, event)}>Submit</button>
+                <button onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
             </form>
+            <div>
+                <button onClick={()=>handleBack()}>Back to Dashboard</button>
+            </div>
+            <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Duration</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {eventList.map((single)=>{
+                        return(
+                            <tr key={single.id}>
+                                <td>{single.human_readable}</td>
+                                <td>{single.duration / 60000}</td>
+                                <td><button onClick={()=>handleDelete(single.id)}>Delete</button></td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }
