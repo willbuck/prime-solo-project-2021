@@ -8,7 +8,7 @@ export default function AdminEvent() {
     //     console.log('start to ISO:', dateOfEvent.toISOString())
     //     console.log('start to Locale string:', dateOfEvent.toLocaleString())
 
-    const events = useSelector(store=>store.event)
+    const eventList = useSelector(store=>store.event)
 
 
     const history = useHistory();
@@ -41,6 +41,17 @@ export default function AdminEvent() {
         setDuration(0)
     }
 }
+const handleBack = () => {
+    history.push('/admin')
+}
+
+const handleDelete = (eventID) => {
+    console.log('in delete for ID', eventID)
+}
+
+useEffect(()=>{
+    dispatch({type:'GET_EVENTS'})
+}, [])
 
 
 
@@ -55,8 +66,6 @@ export default function AdminEvent() {
                     type="datetime-local"
                     id="start"
                     name="start"
-                    min={new Date()}
-                    max="2040-12-31"
                     value={dateTime}
                     onChange={(event) => setDateTime(event.target.value)} />
 
@@ -76,7 +85,31 @@ export default function AdminEvent() {
                 </select>
                 <button onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
             </form>
-            <p>{JSON.stringify(events)}</p>
+            <div>
+                <button onClick={()=>handleBack()}>Back to Dashboard</button>
+            </div>
+            <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Duration</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {eventList.map((single)=>{
+                        return(
+                            <tr key={single.id}>
+                                <td>{single.date}</td>
+                                <td>{single.duration / 60000}</td>
+                                <td><button onClick={()=>handleDelete(single.id)}>Delete</button></td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }

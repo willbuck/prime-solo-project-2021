@@ -7,7 +7,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
-            SELECT "date", "duration" from "event"
+            SELECT "id", "date", "duration" from "event"
             ORDER BY "date" DESC
         `
     pool.query(queryText).then((response)=>{
