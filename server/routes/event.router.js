@@ -8,6 +8,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
             SELECT "id", "human_readable", "date", "duration" from "event"
+            WHERE "is_complete" = false
             ORDER BY "date" DESC
         `
         pool.query(queryText).then((response) => {
