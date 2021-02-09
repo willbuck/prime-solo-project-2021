@@ -16,7 +16,7 @@ function* getEvents() {
 //add new event
 function* postEvent(action) {
     try{
-        console.log('in postKoan saga with', action.payload)
+        console.log('in postEvent saga with', action.payload)
         yield axios.post('/api/event', action.payload)
         yield put({type: 'GET_EVENTS'})
     } catch(error){
@@ -26,7 +26,7 @@ function* postEvent(action) {
 //delete specific events
 function* deleteEvent(action) {
     try{
-        console.log('in deleteKoan saga with', action.payload)
+        console.log('in deleteEvent saga with', action.payload)
         yield axios.delete(`/api/event/${action.payload}`)
         yield put({type: 'GET_EVENTS'})
     } catch(error){

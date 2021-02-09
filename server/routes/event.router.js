@@ -7,7 +7,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
-            SELECT "id", "date", "duration" from "event"
+            SELECT "id", "human_readable", "date", "duration" from "event"
             ORDER BY "date" DESC
         `
     pool.query(queryText).then((response)=>{
@@ -23,16 +23,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   };
 });
 
-/**
- * POST route template
- */
+//adds new event to DB
 router.post('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin){
         console.log(req.body)
-        const insertText = [req.body.date, req.body.start, req.body.duration];
+        const insertText = [req.body.date, req.body.start, req.body.duration, req.body.human_readable];
         const queryText = `
-            INSERT INTO "event" ("date", "start", "duration")
-            VALUES ($1, $2, $3);
+            INSERT INTO "event" ("date", "start", "duration", "human_readable")
+            VALUES ($1, $2, $3, $4);
         `
         pool.query(queryText, insertText)
         .then((response)=>{
@@ -43,6 +41,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
     }
+    else {
+        res.sendStatus(403)
+    }
 });
+
+//delete route to remove from db
 
 module.exports = router;
