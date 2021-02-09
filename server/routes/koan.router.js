@@ -53,8 +53,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 //delete route to delte specific koan
-router.delete('/:id', (req, res) => {
-    // DELETE route code here
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    const id = [req.params.id];
+    const queryText = `
+        DELETE FROM "koan"
+        WHERE "id" = $1;
+    `
+    pool.query(queryText, id).then((response)=>{
+        console.log(response);
+        res.sendStatus(204);
+    }).catch((error)=>{
+        console.log('error in koan delete')
+        console.log(error);
+        res.sendStatus(500);
+    })
 });
 
 
