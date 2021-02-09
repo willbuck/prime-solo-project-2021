@@ -13,6 +13,18 @@ function* getEvents() {
     }
 }
 
+//gets all completed events
+function* getRecords() {
+    try{
+        console.log('in getRecords saga')
+        const response = yield axios.get('/api/event/records');
+        console.log('in getRecords server response', response.data);
+        yield put({type: 'SET_EVENTS', payload: response.data})
+    } catch{
+        console.log('error in getRecords')
+    }
+}
+
 //add new event
 function* postEvent(action) {
     try{
@@ -38,7 +50,8 @@ function* deleteEvent(action) {
 function* eventSaga() {
     yield takeLatest('GET_EVENTS', getEvents);
     yield takeLatest('POST_EVENT', postEvent);
-    yield takeLatest('DELETE_EVENT', deleteEvent);
+    yield takeLatest('DELETE_EVENT', deleteEvent)
+    yield takeLatest('GET_RECORDS', getRecords);
   }
 
 export default eventSaga;

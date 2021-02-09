@@ -31,10 +31,12 @@ export default function AdminEvent() {
             ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
             (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
 
+
         //object for sever
         const newEvent = {
             date: eventDate,
             human_readable: dateOfEvent.toDateString(),
+            human_readable_time: dateOfEvent.toLocaleTimeString('en-US'),
             start: timeStart,
             duration: eventTime,
         }
@@ -101,6 +103,7 @@ useEffect(()=>{
                 <thead>
                     <tr>
                         <td>Date</td>
+                        <td>Time</td>
                         <td>Duration</td>
                         <td>Delete</td>
                     </tr>
@@ -110,6 +113,7 @@ useEffect(()=>{
                         return(
                             <tr key={single.id}>
                                 <td>{single.human_readable}</td>
+                                <td>{single.human_readable_time}</td>
                                 <td>{single.duration / 60000}</td>
                                 <td><button onClick={()=>handleDelete(single.id)}>Delete</button></td>
                             </tr>

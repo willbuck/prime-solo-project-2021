@@ -18,6 +18,7 @@ export default function AdminHome() {
                 history.push('/admin/koan');
                 break;
             case 'records':
+                dispatch({type: 'GET_RECORDS'})
                 history.push('/admin/records');
                 break;
             default:

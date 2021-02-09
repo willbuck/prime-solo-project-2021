@@ -4,10 +4,11 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
 //GET route will show different results if USER or ADMIN
+//THIS route is to get ALL events that havent happened yet
 router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
-            SELECT "id", "human_readable", "date", "duration" from "event"
+            SELECT "id", "human_readable", "human_readable_time", "date", "duration" from "event"
             WHERE "is_complete" = false
             ORDER BY "date" DESC
         `
@@ -24,14 +25,35 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     };
 });
 
+//this route will get all events that have already happened
+router.get('/records', rejectUnauthenticated, (req, res) => {
+    if (req.user.is_admin) {
+        const queryText = `
+            SELECT "id", "human_readable", "human_readable_time" "date", "duration", "attended", "left_early", from "event"
+            WHERE "is_complete" = true
+            ORDER BY "date" DESC
+        `
+        pool.query(queryText).then((response) => {
+            console.log('response from admin getRecords', response.rows);
+            res.send(response.rows);
+        }).catch((error) => {
+            console.log('error from admin getRecords', error);
+            res.sendStatus(500);
+        })
+    }
+    else {
+        res.sendStatus(403)
+    };
+});
+
 //adds new event to DB
 router.post('/', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         console.log(req.body)
-        const insertText = [req.body.date, req.body.start, req.body.duration, req.body.human_readable];
+        const insertText = [req.body.date, req.body.start, req.body.duration, req.body.human_readable, req.body.human_readable_time];
         const queryText = `
-            INSERT INTO "event" ("date", "start", "duration", "human_readable")
-            VALUES ($1, $2, $3, $4);
+            INSERT INTO "event" ("date", "start", "duration", "human_readable", "human_readable_time")
+            VALUES ($1, $2, $3, $4, $5);
         `
         pool.query(queryText, insertText)
             .then((response) => {
