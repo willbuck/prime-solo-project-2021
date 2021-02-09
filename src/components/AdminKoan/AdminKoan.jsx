@@ -31,17 +31,20 @@ export default function AdminKoan() {
     const handleClick = (type, event) => {
         event.preventDefault();
 
-        switch (type) {
-            case 'back':
-                history.push('/admin');
-                break;
-            case 'submit':
-                console.log('submitting')
-                dispatch({ type: 'POST_KOAN', payload: {koan: koan}})
-
+        if (type === 'back'){
+            history.push('/admin');
+        }
+        else if (type === 'submit'){
+            console.log('submitting')
+            dispatch({ type: 'POST_KOAN', payload: {koan: koan}})
+            setKoan('');
+        }
+        else if (type){
+            dispatch({type: 'DELETE_KOAN', payload: type})
         }
     }
 
+    //loads koans on page load
     useEffect(() => {
         getKoans();
     }, [])
@@ -64,7 +67,27 @@ export default function AdminKoan() {
                 </form>
             </div>
             <div>
-                <button onClick={() => handleClick('back')}>Back to Dashboard</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Koan</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {koanList.map((entry)=>{
+                            return(
+                            <tr key={entry.id}>
+                                <td>{entry.koan_text}</td>
+                                <td><button onClick={(event)=>handleClick(entry.id, event)}>Delete</button></td>
+                            </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button onClick={(event) => handleClick('back', event)}>Back to Dashboard</button>
             </div>
         </div>
 

@@ -26,8 +26,8 @@ function* postKoan(action) {
 //delete specific koans
 function* deleteKoan(action) {
     try{
-        console.log('in deleteKoan with', action.payload)
-        yield axios.post(`/api/koan${action.payload}`)
+        console.log('in deleteKoan saga with', action.payload)
+        yield axios.post(`/api/koan/${action.payload}`)
         yield put({type: 'GET_KOANS'})
     } catch(error){
         console.log('error in deleteKoans')
