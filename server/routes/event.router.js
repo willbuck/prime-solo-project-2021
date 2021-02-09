@@ -29,7 +29,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/records', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
         const queryText = `
-            SELECT "id", "human_readable", "human_readable_time" "date", "duration", "attended", "left_early", from "event"
+            SELECT "id", "human_readable", "human_readable_time", "date", "duration", "attended", "leave_early" from "event"
             WHERE "is_complete" = true
             ORDER BY "date" DESC
         `
