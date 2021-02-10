@@ -28,15 +28,16 @@ function UserPage() {
     history.push('/zendo')
   }
 
-  //getEvents sends the current time to the server
-  //it returns the nearest upcoming event to the splash page
-  function getEvents() {
+  //getSchedule sends the current time in ms from 1970 to the server
+  //it returns the nearest upcoming events
+  function getSchedule() {
     const now = new Date();
     dispatch({type: 'GET_USER', payload: now.getTime()})
+    dispatch({type: 'GET_KOAN'})
   }
 
   useEffect(() => {
-    getEvents();
+    getSchedule();
   }, [])
 
 

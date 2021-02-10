@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-//get all koans
+//get all koans for admin
 function* getKoans() {
     try{
         console.log('in getKoans')
@@ -10,6 +10,17 @@ function* getKoans() {
         yield put({type: 'SET_KOANS', payload: response.data})
     } catch{
         console.log('error in getKoans')
+    }
+}
+//get single koan for user
+function* getKoan() {
+    try{
+        console.log('in getKoan for user')
+        const response = yield axios.get('/api/koan/user');
+        console.log('in getKoan for user server response', response.data);
+        yield put({type: 'SET_KOANS', payload: response.data})
+    } catch{
+        console.log('error in getKoan for user')
     }
 }
 
@@ -37,6 +48,7 @@ function* deleteKoan(action) {
 
 function* koanSaga() {
     yield takeLatest('GET_KOANS', getKoans);
+    yield takeLatest('GET_KOAN', getKoan);
     yield takeLatest('POST_KOAN', postKoan);
     yield takeLatest('DELETE_KOAN', deleteKoan);
   }
