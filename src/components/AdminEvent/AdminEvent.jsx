@@ -27,17 +27,19 @@ export default function AdminEvent() {
 
         const dateOfEvent = new Date(eventDate)
 
-        const timeStart =
-            ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
-            (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
+        // const timeStart =
+        //     ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
+        //     (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
+
+        // console.log('gettime function', dateOfEvent.getTime())
 
 
         //object for sever
         const newEvent = {
             date: eventDate,
             human_readable: dateOfEvent.toDateString(),
-            human_readable_time: dateOfEvent.toLocaleTimeString('en-US'),
-            start: timeStart,
+            human_readable_time: dateOfEvent.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
+            start: dateOfEvent.getTime(),
             duration: eventTime,
         }
         //sends new event to event.saga.js, resets values
