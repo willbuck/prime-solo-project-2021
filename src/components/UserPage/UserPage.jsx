@@ -1,5 +1,4 @@
 // import LogOutButton from '../LogOutButton/LogOutButton';
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
@@ -7,21 +6,26 @@ import {useDispatch, useSelector} from 'react-redux'
 
 function UserPage() {
   //user stores user info n page
-  const user = useSelector((store) => store.user);
-  const events = useSelector(store=>store.event)
+  const user = useSelector(store=> store.user);
+  const events = useSelector(store=>store.event);
+  const koan = useSelector(store=>store.koan)
+
   const dispatch = useDispatch()
 
   const history = useHistory()
 
-  //
+  //dispatches event details along with koan to it's own reducer that
+  //stores all information for the upcoming event
+
+  //START HERE TOMORROW
   const enterZendo = (singleEvent) => {
     console.log('lone event in dispatch', singleEvent)
-    dispatch({type: 'MEDITATION', payload:{
+    dispatch({type: 'ZENDO_DETAILS', payload:{
         id: singleEvent.id,
-        hour: singleEvent.start_time_hour,
-        minute: singleEvent.start_time_minute,
+        start: singleEvent.start,
         duration: singleEvent.duration,
-        koan: singleEvent.koan
+        time: singleEvent.human_readable_time,
+        koan: koan
     }})
     //button sends you into the zendo
     //it gets you to Stage0, where the timers begin
