@@ -4,14 +4,15 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
 //GET route for admin
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:time', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
+        const time = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration" from "event"
-            WHERE "is_complete" = false
+            WHERE "start" > $1
             ORDER BY "date" DESC
         `
-        pool.query(queryText).then((response) => {
+        pool.query(queryText, time).then((response) => {
             console.log('response from admin getEvent', response.rows);
             res.send(response.rows);
         }).catch((error) => {
@@ -31,7 +32,7 @@ router.get('/user/:time', rejectUnauthenticated, (req, res) => {
         const now = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
-            WHERE ("is_complete" = false) AND ("start" > $1)
+            WHERE "start" > $1
             ORDER BY "date" ASC
             LIMIT 5;
         `

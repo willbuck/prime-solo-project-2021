@@ -60,9 +60,11 @@ const handleDelete = (eventID) => {
     dispatch({type: 'DELETE_EVENT', payload: eventID})
 }
 
+//this moment in time, used for sorting!
+const now = new Date().getTime()
 //loads events as page loads
 useEffect(()=>{
-    dispatch({type:'GET_EVENTS'})
+    dispatch({type:'GET_EVENTS', payload: now})
 }, [])
 
 

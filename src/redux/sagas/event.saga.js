@@ -2,10 +2,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 //get all events for admin
-function* getEvents() {
+function* getEvents(action) {
     try{
         console.log('in getEvents saga')
-        const response = yield axios.get('/api/event');
+        const response = yield axios.get(`/api/event/${action.payload}`);
         console.log('in getEvents server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
@@ -61,7 +61,8 @@ function* postEvent(action) {
     try{
         console.log('in postEvent saga with', action.payload)
         yield axios.post('/api/event', action.payload)
-        yield put({type: 'GET_EVENTS'})
+        const now = new Date().getTime()
+        yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
         console.log('error in postEvents')
     }
@@ -71,7 +72,8 @@ function* deleteEvent(action) {
     try{
         console.log('in deleteEvent saga with', action.payload)
         yield axios.delete(`/api/event/${action.payload}`)
-        yield put({type: 'GET_EVENTS'})
+        const now = new Date().getTime()
+        yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
         console.log('error in deleteEvents')
     }
