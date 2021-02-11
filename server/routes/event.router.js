@@ -73,14 +73,15 @@ router.get('/zendo/:event', rejectUnauthenticated, (req, res) => {
 
 
 //this route will get all events that have already happened
-router.get('/records', rejectUnauthenticated, (req, res) => {
+router.get('/records/:time', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
+        const sort = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration", "attended", "leave_early" from "event"
-            WHERE "is_complete" = true
+            WHERE "start" < $1
             ORDER BY "date" DESC
         `
-        pool.query(queryText).then((response) => {
+        pool.query(queryText, sort).then((response) => {
             console.log('response from admin getRecords', response.rows);
             res.send(response.rows);
         }).catch((error) => {

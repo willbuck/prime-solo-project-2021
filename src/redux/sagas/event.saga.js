@@ -45,10 +45,10 @@ function* updateEvent(action) {
 }
 
 //gets all completed events for admin records view
-function* getRecords() {
+function* getRecords(action) {
     try{
         console.log('in getRecords saga')
-        const response = yield axios.get('/api/event/records');
+        const response = yield axios.get(`/api/event/records/${action.payload}`);
         console.log('in getRecords server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
