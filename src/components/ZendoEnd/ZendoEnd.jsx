@@ -1,14 +1,15 @@
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 export default function ZendoEnd () {
 
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const handleClick = () =>{
         console.log('leave room')
-        //update DB that user has left?
         history.push('/user')
+
     }
 
 

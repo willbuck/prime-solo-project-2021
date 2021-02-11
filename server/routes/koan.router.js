@@ -76,7 +76,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     }
 });
 
-//delete route to delte specific koan
+//delete route to delete specific koan
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const id = [req.params.id];
     const queryText = `
