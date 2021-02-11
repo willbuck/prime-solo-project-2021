@@ -24,8 +24,27 @@ function* getEventsUser(action) {
         console.log('error in getEvents')
     }
 }
+//updates event and user_event with attendance information
+function* updateEvent(action) {
+    try{
+        if(action.payload.left){
+        console.log('in updateEvent LEFT saga with payload', action.payload);
+        const response = yield axios.put(`/api/update/left`, action.payload);
+        console.log('response from updateEvent server', response)
 
-//gets all completed events
+        }
+        else{
+        console.log('in updateEvent saga with payload', action.payload);
+        yield axios.put(`/api/update/`, action.payload);
+        yield axios.post(`/api/update/`, action.payload);
+        }
+
+    }catch(error){
+        console.log('error in updating event saga')
+    }
+}
+
+//gets all completed events for admin records view
 function* getRecords() {
     try{
         console.log('in getRecords saga')
@@ -64,6 +83,7 @@ function* eventSaga() {
     yield takeLatest('GET_USER', getEventsUser);
     yield takeLatest('POST_EVENT', postEvent);
     yield takeLatest('DELETE_EVENT', deleteEvent)
+    yield takeLatest('UPDATE_EVENT', updateEvent)
     yield takeLatest('GET_RECORDS', getRecords);
   }
 
