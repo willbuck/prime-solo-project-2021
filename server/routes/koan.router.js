@@ -74,10 +74,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 
     }
+    else{
+        res.sendStatus(403)
+    }
 });
 
-//delete route to delte specific koan
+//delete route to delete specific koan
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    if(req.user.is_admin){
     const id = [req.params.id];
     const queryText = `
         DELETE FROM "koan"
@@ -91,7 +95,35 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         console.log(error);
         res.sendStatus(500);
     })
+}
+else{
+    res.sendStatus(403)
+}
 });
+
+
+//post route for user to save koan
+router.post('/save', rejectUnauthenticated, (req, res)=>{
+    if(req.user.id){
+    console.log('in saveKoan post route');
+    const queryData = [req.user.id, req.body.koan];
+    const queryText = `
+        INSERT INTO "user_koan" ("user_id", "koan_id")
+        VALUES ($1, $2);
+    `
+    pool.query(queryText, queryData).then((response)=>{
+        console.log('reponse from saveKoan post:', response);
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('error from saveKoan user', error);
+        res.sendStatus(500);
+    })
+    }
+    else{
+        res.sendStatus(403)
+    }
+
+})
 
 
 

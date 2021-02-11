@@ -2,10 +2,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 //get all events for admin
-function* getEvents() {
+function* getEvents(action) {
     try{
         console.log('in getEvents saga')
-        const response = yield axios.get('/api/event');
+        const response = yield axios.get(`/api/event/${action.payload}`);
         console.log('in getEvents server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
@@ -24,12 +24,31 @@ function* getEventsUser(action) {
         console.log('error in getEvents')
     }
 }
+//updates event and user_event with attendance information
+function* updateEvent(action) {
+    try{
+        if(action.payload.left){
+        console.log('in updateEvent LEFT saga with payload', action.payload);
+        const response = yield axios.put(`/api/update/left`, action.payload);
+        console.log('response from updateEvent server', response)
 
-//gets all completed events
-function* getRecords() {
+        }
+        else{
+        console.log('in updateEvent saga with payload', action.payload);
+        yield axios.put(`/api/update/`, action.payload);
+        yield axios.post(`/api/update/`, action.payload);
+        }
+
+    }catch(error){
+        console.log('error in updating event saga')
+    }
+}
+
+//gets all completed events for admin records view
+function* getRecords(action) {
     try{
         console.log('in getRecords saga')
-        const response = yield axios.get('/api/event/records');
+        const response = yield axios.get(`/api/event/records/${action.payload}`);
         console.log('in getRecords server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
@@ -42,7 +61,8 @@ function* postEvent(action) {
     try{
         console.log('in postEvent saga with', action.payload)
         yield axios.post('/api/event', action.payload)
-        yield put({type: 'GET_EVENTS'})
+        const now = new Date().getTime()
+        yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
         console.log('error in postEvents')
     }
@@ -52,7 +72,8 @@ function* deleteEvent(action) {
     try{
         console.log('in deleteEvent saga with', action.payload)
         yield axios.delete(`/api/event/${action.payload}`)
-        yield put({type: 'GET_EVENTS'})
+        const now = new Date().getTime()
+        yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
         console.log('error in deleteEvents')
     }
@@ -64,6 +85,7 @@ function* eventSaga() {
     yield takeLatest('GET_USER', getEventsUser);
     yield takeLatest('POST_EVENT', postEvent);
     yield takeLatest('DELETE_EVENT', deleteEvent)
+    yield takeLatest('UPDATE_EVENT', updateEvent)
     yield takeLatest('GET_RECORDS', getRecords);
   }
 

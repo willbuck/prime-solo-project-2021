@@ -4,14 +4,15 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
 //GET route for admin
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:time', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
+        const time = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration" from "event"
-            WHERE "is_complete" = false
+            WHERE "start" > $1
             ORDER BY "date" DESC
         `
-        pool.query(queryText).then((response) => {
+        pool.query(queryText, time).then((response) => {
             console.log('response from admin getEvent', response.rows);
             res.send(response.rows);
         }).catch((error) => {
@@ -24,39 +25,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     };
 });
 
-//get route to get events for user
+//get route to get events for user for splash page
 router.get('/user/:time', rejectUnauthenticated, (req, res) => {
     console.log('in serverSide userGETEVENTS')
     if (req.user.id) {
         const now = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
-            WHERE ("is_complete" = false) AND ("start" > $1)
-            ORDER BY "date" ASC
-            LIMIT 5;
-        `
-        pool.query(queryText, now).then((response) => {
-            console.log('response from userGetEvent', response.rows);
-            res.send(response.rows);
-        }).catch((error) => {
-            console.log('error from user getEvents', error);
-            res.sendStatus(500);
-        })
-    }
-    else {
-        res.sendStatus(403)
-    };
-});
-
-//NOT FINISHED
-//PUT route to add ONE attendee to session (update with leave early, use if else block)
-router.put('/user/', rejectUnauthenticated, (req, res) => {
-    console.log('in serverSide userGETEVENTS')
-    if (req.user.id) {
-        const now = [req.params.time]
-        const queryText = `
-            SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
-            WHERE ("is_complete" = false) AND ("start" < $1)
+            WHERE "start" > $1
             ORDER BY "date" ASC
             LIMIT 5;
         `
@@ -74,7 +50,7 @@ router.put('/user/', rejectUnauthenticated, (req, res) => {
 });
 
 
-//get route to get events for user
+//get route to get total number attended for the user view
 router.get('/zendo/:event', rejectUnauthenticated, (req, res) => {
     console.log('in server side get attended')
     if (req.user.id) {
@@ -98,14 +74,15 @@ router.get('/zendo/:event', rejectUnauthenticated, (req, res) => {
 
 
 //this route will get all events that have already happened
-router.get('/records', rejectUnauthenticated, (req, res) => {
+router.get('/records/:time', rejectUnauthenticated, (req, res) => {
     if (req.user.is_admin) {
+        const sort = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration", "attended", "leave_early" from "event"
-            WHERE "is_complete" = true
+            WHERE "start" < $1
             ORDER BY "date" DESC
         `
-        pool.query(queryText).then((response) => {
+        pool.query(queryText, sort).then((response) => {
             console.log('response from admin getRecords', response.rows);
             res.send(response.rows);
         }).catch((error) => {

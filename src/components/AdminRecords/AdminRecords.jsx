@@ -6,6 +6,7 @@ export default function AdminRecords() {
 
   const history = useHistory()
   const dispatch = useDispatch()
+  const now = new Date().getTime()
 
   const records = useSelector(store => store.event)
 
@@ -14,7 +15,7 @@ export default function AdminRecords() {
   }
 
   useEffect(()=>{
-    dispatch({type: 'GET_RECORDS'})
+    dispatch({type: 'GET_RECORDS', payload: now})
   }, [])
 
   return (
@@ -40,7 +41,7 @@ export default function AdminRecords() {
                 <td>{record.human_readable_time}</td>
                 <td>{record.duration / 60000}</td>
                 <td>{record.attended}</td>
-                <td>{record.left_early}</td>
+                <td>{record.leave_early}</td>
               </tr>
 
             )

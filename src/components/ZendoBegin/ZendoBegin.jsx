@@ -15,6 +15,7 @@ export default function ZendoBegin ({attended}) {
     const handleClick = () =>{
         console.log('leave room')
         //update DB that user has left?
+        dispatch({type: 'UPDATE_EVENT', payload: {id: sessionInfo.id, left: true}})
         history.push('/user')
     }
 
