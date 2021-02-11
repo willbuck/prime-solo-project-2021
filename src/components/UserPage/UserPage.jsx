@@ -22,10 +22,10 @@ function UserPage() {
     console.log('lone event in dispatch', singleEvent)
     dispatch({type: 'ZENDO_DETAILS', payload:{
         id: singleEvent.id,
-        start: singleEvent.start,
+        start: Number(singleEvent.start),
         duration: singleEvent.duration,
         time: singleEvent.human_readable_time,
-        koan: koan
+        koan: koan[0]
     }})
     //button sends you into the zendo
     //it gets you to Stage0, where the timers begin

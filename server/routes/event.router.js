@@ -30,7 +30,7 @@ router.get('/user/:time', rejectUnauthenticated, (req, res) => {
     if (req.user.id) {
         const now = [req.params.time]
         const queryText = `
-            SELECT "id", "human_readable", "human_readable_time", "date", "duration" from "event"
+            SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
             WHERE ("is_complete" = false) AND ("start" < $1)
             ORDER BY "date" ASC
             LIMIT 5;
