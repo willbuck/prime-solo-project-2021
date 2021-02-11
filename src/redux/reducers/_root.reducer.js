@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import koan from './koan.reducer'
 import event from './event.reducer'
+import zendo from './zendo.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   koan, // will return all koans in DB
   event, // will return all events in DB
+  zendo, //holds details for individual session for user
 });
 
 export default rootReducer;

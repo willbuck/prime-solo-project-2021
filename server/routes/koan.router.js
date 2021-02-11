@@ -27,6 +27,30 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
 });
 
+//GET route for single random koan for user
+router.get('/user', rejectUnauthenticated, (req, res) => {
+    // GET route code here
+    if (req.user.id) {
+        console.log('in /api/koan/user get')
+        const queryText = `
+            SELECT * FROM "koan"
+            ORDER BY RANDOM() LIMIT 1
+    `
+        pool.query(queryText).then((response) => {
+            console.log('success in /api/koan/user', response);
+            res.send(response.rows)
+        }).catch((error) => {
+            console.log('error in /api/koan/user')
+            console.log(error)
+            res.sendStatus(500);
+        })
+
+    }
+    else {
+        res.sendStatus(403)
+    }
+});
+
 
 //POST route to add new koan
 
@@ -59,10 +83,10 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         DELETE FROM "koan"
         WHERE "id" = $1;
     `
-    pool.query(queryText, id).then((response)=>{
+    pool.query(queryText, id).then((response) => {
         console.log(response);
         res.sendStatus(204);
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log('error in koan delete')
         console.log(error);
         res.sendStatus(500);

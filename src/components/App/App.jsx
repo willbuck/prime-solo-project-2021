@@ -26,6 +26,7 @@ import AdminHome from '../AdminHome/AdminHome';
 import AdminEvent from '../AdminEvent/AdminEvent';
 import AdminKoan from '../AdminKoan/AdminKoan';
 import AdminRecords from '../AdminRecords/AdminRecords';
+import Zendo from '../Zendo/Zendo.jsx'
 
 import './App.css';
 
@@ -72,6 +73,15 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/zendo"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/zendo"
+          >
+            <Zendo />
+          </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
@@ -108,6 +118,7 @@ function App() {
           >
             <LandingPage />
           </ProtectedRoute>
+
 
           {/* group of protected routes for Admin View */}
           <ProtectedAdmin
