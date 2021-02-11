@@ -31,6 +31,31 @@ router.get('/user/:time', rejectUnauthenticated, (req, res) => {
         const now = [req.params.time]
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
+            WHERE ("is_complete" = false) AND ("start" > $1)
+            ORDER BY "date" ASC
+            LIMIT 5;
+        `
+        pool.query(queryText, now).then((response) => {
+            console.log('response from userGetEvent', response.rows);
+            res.send(response.rows);
+        }).catch((error) => {
+            console.log('error from user getEvents', error);
+            res.sendStatus(500);
+        })
+    }
+    else {
+        res.sendStatus(403)
+    };
+});
+
+//NOT FINISHED
+//PUT route to add ONE attendee to session (update with leave early, use if else block)
+router.put('/user/', rejectUnauthenticated, (req, res) => {
+    console.log('in serverSide userGETEVENTS')
+    if (req.user.id) {
+        const now = [req.params.time]
+        const queryText = `
+            SELECT "id", "human_readable", "human_readable_time", "date", "duration", "start" from "event"
             WHERE ("is_complete" = false) AND ("start" < $1)
             ORDER BY "date" ASC
             LIMIT 5;
@@ -47,6 +72,30 @@ router.get('/user/:time', rejectUnauthenticated, (req, res) => {
         res.sendStatus(403)
     };
 });
+
+
+//get route to get events for user
+router.get('/zendo/:event', rejectUnauthenticated, (req, res) => {
+    console.log('in server side get attended')
+    if (req.user.id) {
+        const eventID = [req.params.event]
+        const queryText = `
+            SELECT "attended" from "event"
+            WHERE "id" = $1;
+        `
+        pool.query(queryText, eventID).then((response) => {
+            console.log('response from server get attended', response.rows);
+            res.send(response.rows);
+        }).catch((error) => {
+            console.log('error from user get attended', error);
+            res.sendStatus(500);
+        })
+    }
+    else {
+        res.sendStatus(403)
+    };
+});
+
 
 //this route will get all events that have already happened
 router.get('/records', rejectUnauthenticated, (req, res) => {
