@@ -45,12 +45,23 @@ function* deleteKoan(action) {
     }
 }
 
+function* saveKoan(action){
+    try{
+        console.log('in save koan');
+        const response = yield axios.post('/api/koan/save', action.payload);
+        console.log('server responding to saveKoan', response);
+    }catch(error){
+        console.log('error saving koan for user', error)
+    }
+}
+
 
 function* koanSaga() {
     yield takeLatest('GET_KOANS', getKoans);
     yield takeLatest('GET_KOAN', getKoan);
     yield takeLatest('POST_KOAN', postKoan);
     yield takeLatest('DELETE_KOAN', deleteKoan);
+    yield takeLatest('SAVE_KOAN', saveKoan);
   }
 
 export default koanSaga;

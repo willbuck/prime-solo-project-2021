@@ -6,9 +6,14 @@ export default function ZendoEnd () {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const handleClick = () =>{
+    const handleClick = (save) =>{
+        if(save){
+            dispatch({type: 'SAVE_KOAN', payload: {koan: save}})
+        }
+        else{
         console.log('leave room')
         history.push('/user')
+        }
 
     }
 
@@ -17,8 +22,12 @@ export default function ZendoEnd () {
     return(
         <>
         <p>Thank You for sitting, here's your koan:</p>
+        <div>
         <p>{sessionInfo.koan.koan_text}</p>
-        <button onClick={()=>{handleClick()}}>Back to User Portal</button>
+        <button onClick={()=>handleClick(sessionInfo.koan.id)}>Save</button>
+        </div>
+
+        <button onClick={()=>{handleClick(false)}}>Back to User Portal</button>
         </>
 
     )
