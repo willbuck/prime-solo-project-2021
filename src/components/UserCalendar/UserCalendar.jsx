@@ -1,0 +1,41 @@
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+
+export default function UserCalendar() {
+
+    const history = useHistory();
+    const calendar = useSelector(store=>store.calendar)
+
+    const handleClick = () =>{
+        history.push('/user')
+    }
+
+    return(
+        <div>
+        <h1>Calendar</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                {calendar.map((event)=>{
+                return(
+                        <tr key={event.id}>
+                            <td>{event.human_readable}</td>
+                            <td>{event.human_readable_time}</td>
+                            <td>{event.duration / 60000}</td>
+                        </tr>
+                )
+                })}
+            </tbody>
+        </table>
+        <div>
+            <button onClick={()=>handleClick()}>Back to Portal</button>
+        </div>
+        </div>
+    )
+}

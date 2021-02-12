@@ -32,6 +32,17 @@ function UserPage() {
     history.push('/zendo')
   }
 
+  const handleClick = (destination) => {
+    if(destination){
+      dispatch({type: 'REFLECTION'})
+      history.push('/user/koan')
+    }
+    else {
+      dispatch({type: 'GET_CALENDAR'})
+      history.push('/user/calendar')
+    }
+  }
+
   //getSchedule sends the current time in ms from 1970 to the server
   //it returns the nearest upcoming events
   function getSchedule() {
@@ -78,8 +89,8 @@ function UserPage() {
             </tbody>
           </table>
           <div className="button-container">
-            <button onClick={()=>console.log('nav to Koan view')}>View all Koans</button>
-            <button onClick={()=>console.log('nav to Calendar view')}>View Calendar</button>
+            <button onClick={()=>handleClick(true)}>View all Koans</button>
+            <button onClick={()=>handleClick(false)}>View Calendar</button>
           </div>
         </div>
       </header>

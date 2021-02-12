@@ -19,12 +19,29 @@ export default function ZendoBegin ({attended}) {
         history.push('/user')
     }
 
+    //makeArray lets me create divs on the screen, one for each person sitting
+    function makeArray(number) {
+        let array = []
+        let counter = 0;
+        for(let i = 0; i < number; i++){
+            array.push(counter++)
+        }
+        return array
+    }
+
+    //div maker becomes the array I loop over to generate visual representation of people sitting
+    const divmaker = makeArray(attended);
 
     return(
         <>
         <p>You're meditating</p>
         <p>People sitting with you: {attended}</p>
         <button onClick={()=>{handleClick()}}>Back to User Portal</button>
+        {divmaker.map((object)=>{
+            return(
+                <p key={object}>HERES ONE</p>
+            )
+        })}
         </>
 
     )

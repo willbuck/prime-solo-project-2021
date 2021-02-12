@@ -12,6 +12,8 @@ const userRouter = require('./routes/user.router');
 const koanRouter = require('./routes/koan.router');
 const eventRouter = require('./routes/event.router')
 const updateRouter = require('./routes/update.router')
+const calendarRouter = require('./routes/calendar.router')
+const reflectionRouter = require('./routes/reflection.router')
 
 
 // Body parser middleware
@@ -28,8 +30,10 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/koan', koanRouter);
-app.use('/api/event', eventRouter)
-app.use('/api/update', updateRouter)
+app.use('/api/event', eventRouter);
+app.use('/api/update', updateRouter);
+app.use('/api/calendar', calendarRouter);
+app.use('/api/reflection', reflectionRouter);
 
 // Serve static files
 app.use(express.static('build'));
