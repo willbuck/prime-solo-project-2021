@@ -41,7 +41,7 @@ function* deleteKoan(action) {
         yield axios.delete(`/api/koan/${action.payload}`)
         yield put({type: 'GET_KOANS'})
     } catch(error){
-        console.log('error in deleteKoans')
+        console.error('error in deleteKoans')
     }
 }
 
@@ -51,7 +51,7 @@ function* saveKoan(action){
         const response = yield axios.post('/api/koan/save', action.payload);
         console.log('server responding to saveKoan', response);
     }catch(error){
-        console.log('error saving koan for user', error)
+        console.error('error saving koan for user', error)
     }
 }
 

@@ -9,7 +9,7 @@ function* getEvents(action) {
         console.log('in getEvents server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
-        console.log('error in getEvents')
+        console.error('error in getEvents')
     }
 }
 
@@ -21,7 +21,7 @@ function* getEventsUser(action) {
         console.log('in getEventsUser server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
-        console.log('error in getEvents')
+        console.error('error in getEvents')
     }
 }
 //updates event and user_event with attendance information
@@ -40,7 +40,7 @@ function* updateEvent(action) {
         }
 
     }catch(error){
-        console.log('error in updating event saga')
+        console.error('error in updating event saga')
     }
 }
 
@@ -52,7 +52,7 @@ function* getRecords(action) {
         console.log('in getRecords server response', response.data);
         yield put({type: 'SET_EVENTS', payload: response.data})
     } catch{
-        console.log('error in getRecords')
+        console.error('error in getRecords')
     }
 }
 
@@ -64,7 +64,7 @@ function* postEvent(action) {
         const now = new Date().getTime()
         yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
-        console.log('error in postEvents')
+        console.error('error in postEvents')
     }
 }
 //delete specific events
@@ -75,7 +75,7 @@ function* deleteEvent(action) {
         const now = new Date().getTime()
         yield put({type: 'GET_EVENTS', payload: now})
     } catch(error){
-        console.log('error in deleteEvents')
+        console.error('error in deleteEvents')
     }
 }
 
