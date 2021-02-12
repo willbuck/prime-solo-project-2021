@@ -34,12 +34,10 @@ function UserPage() {
 
   const handleClick = (destination) => {
     if(destination){
-
-      console.log('koan')
+      dispatch({type: 'REFLECTION'})
       history.push('/user/koan')
     }
     else {
-      console.log('calendar')
       dispatch({type: 'GET_CALENDAR'})
       history.push('/user/calendar')
     }

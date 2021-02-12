@@ -5,6 +5,7 @@ import koan from './koan.reducer'
 import event from './event.reducer'
 import zendo from './zendo.reducer'
 import calendar from './calendar.reducer'
+import reflection from './reflection.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   event, // will return all events in DB
   zendo, //holds details for individual session for user
   calendar, //holds calendar for user
+  reflection,
 });
 
 export default rootReducer;

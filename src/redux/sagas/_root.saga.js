@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import koanSaga from './koan.saga';
 import eventSaga from './event.saga';
 import calendarSaga from './calendar.saga'
+import reflectionSaga from './reflection.saga'
 
 
 // rootSaga is the primary saga.
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     koanSaga(),
     eventSaga(),
     calendarSaga(),
+    reflectionSaga(),
   ]);
 }
