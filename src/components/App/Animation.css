@@ -3,6 +3,14 @@
     bottom: 80px;
     width: 100%
   }
+.about-mountain{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+
 
   .cloud-one{
     width: 25%;
