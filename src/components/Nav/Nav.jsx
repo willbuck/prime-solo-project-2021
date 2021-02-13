@@ -17,7 +17,7 @@ function Nav() {
     loginLinkData.text = 'Home';
 
   }
-  
+
   else if (user.id != null) {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
@@ -26,25 +26,22 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Virtual Zendo</h2>
       </Link>
       <div>
-        <Link className="navLink" to={loginLinkData.path}>
+      <Link className="navLink button-hover-in-bar" to="/about">
+          About
+        </Link>
+        <Link className="navLink button-hover-in-bar" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
 
+
         {user.id && (
           <>
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );

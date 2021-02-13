@@ -1,0 +1,75 @@
+.login-mountain{
+    position: relative;
+    bottom: 80px;
+    width: 100%
+  }
+
+  .cloud-one{
+    width: 25%;
+    position: relative;
+    left: -300px;
+    bottom: 300px;
+    animation-name: drift-one;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+  .cloud-two{
+    width: 25%;
+    position: relative;
+    z-index: -2;
+    left: -100px;
+    bottom: 340px;
+    animation-name: drift-two;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+  .cloud-three{
+    width: 25%;
+    position: relative;
+    z-index: -1;
+    left: -900px;
+    bottom: 325px;
+    animation-name: drift-three;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+  .cloud-four{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: -900px;
+    bottom: 325px;
+    animation-name: drift-three;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+  .cloud-six{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: -100px;
+    bottom: 500px;
+    animation-name: drift-three;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+
+  .button-hover-in-bar{
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes drift-one{
+    from{left: -300px;}
+    to{left: 1200px;}
+  }
+  @keyframes drift-two{
+    from{left: -100px;}
+    to{left: 900px;}
+  }
+  @keyframes drift-three{
+    from{left: -900px;}
+    to{left: 900px;}
+  }

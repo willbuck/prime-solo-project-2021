@@ -29,11 +29,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #142B42;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #142B42;
+  color: white;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -55,8 +55,20 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #3b77b3;
   text-decoration: none;
+}
+.btn:active{
+  background-color: white;
+  color:#032649;
+  border-color: #142B42;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  transition: .2s;
+}
+.btn:focus {
+  outline: 0;
+
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -72,8 +84,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #032649;
+  color: #032649;
 }
 
 /* --------------------------------------------------------------------------------
@@ -96,10 +108,13 @@ Form Treatment
 -------------------------------------------------------------------------------- */
 
 .formPanel {
+  text-align: center;
+  position: relative;
+  bottom: 275px;
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
-  padding: 25px;
+  padding: 10px;
   margin: 0 auto 20px;
   background-color: #efefef;
   border-radius: 3px;

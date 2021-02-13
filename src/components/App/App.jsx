@@ -9,13 +9,11 @@ import {
 import { useDispatch } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -31,6 +29,7 @@ import UserKoan from '../UserKoan/UserKoan';
 import UserCalendar from '../UserCalendar/UserCalendar';
 
 import './App.css';
+import './Animation.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -68,13 +67,6 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/zendo"
@@ -171,7 +163,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

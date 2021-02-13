@@ -16,6 +16,10 @@ export default function UserKoan() {
             history.push('/user')
         }
     }
+    
+    useEffect(()=>{
+        dispatch({type: 'REFLECTION'})
+    }, [])
 
 
     return(
