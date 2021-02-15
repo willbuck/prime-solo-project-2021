@@ -119,7 +119,7 @@ useEffect(()=>{
                                 <td>{single.human_readable}</td>
                                 <td>{single.human_readable_time}</td>
                                 <td>{single.duration / 60000}</td>
-                                <td><button onClick={()=>handleDelete(single.id)}>Delete</button></td>
+                                <td><button className="delete" onClick={()=>handleDelete(single.id)}>Delete</button></td>
                             </tr>
                         )
                     })}

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import MountainFooter from '../Mountains/MountainFooter'
 
 
 //page needs to GET koans on load, arm them with a DELETE button
@@ -31,16 +32,16 @@ export default function AdminKoan() {
     const handleClick = (type, event) => {
         event.preventDefault();
 
-        if (type === 'back'){
+        if (type === 'back') {
             history.push('/admin');
         }
-        else if (type === 'submit'){
+        else if (type === 'submit') {
             console.log('submitting')
-            dispatch({ type: 'POST_KOAN', payload: {koan: koan}})
+            dispatch({ type: 'POST_KOAN', payload: { koan: koan } })
             setKoan('');
         }
-        else if (type){
-            dispatch({type: 'DELETE_KOAN', payload: type})
+        else if (type) {
+            dispatch({ type: 'DELETE_KOAN', payload: type })
         }
     }
 
@@ -51,44 +52,45 @@ export default function AdminKoan() {
 
     return (
         <div>
-            <p>on Admin Koan</p>
             <div>
-                <form>
-                    <label htmlFor="koan">New Koan</label>
+                <form className="koan-form">
+                    <label htmlFor="koan">Add a New Koan:</label>
                     <textarea
                         name="koan"
                         id="koan"
+                        placeholder="new koan text..."
+                        maxlength="1000"
                         value={koan}
                         required
                         onChange={(event) => setKoan(event.target.value)}
                     >
                     </textarea>
-                    <button onClick={(event) => handleClick('submit', event)}>Submit</button>
+                        <button className="submit" onClick={(event) => handleClick('submit', event)}>Submit</button>
                 </form>
             </div>
+
             <div>
-                <table>
+                <table className="koan-table">
                     <thead>
                         <tr>
-                            <th>Koan</th>
-                            <th>Delete</th>
+                            <th></th>
+                            <th>Koan Text</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {koanList.map((entry)=>{
-                            return(
-                            <tr key={entry.id}>
-                                <td>{entry.koan_text}</td>
-                                <td><button onClick={(event)=>handleClick(entry.id, event)}>Delete</button></td>
-                            </tr>
+                        {koanList.map((entry) => {
+                            return (
+                                <tr key={entry.id}>
+
+                                    <td>{entry.koan_text}</td>
+                                    <td><button className="delete" onClick={(event) => handleClick(entry.id, event)}>Delete</button></td>
+                                </tr>
                             )
                         })}
                     </tbody>
                 </table>
             </div>
-            <div>
-                <button onClick={(event) => handleClick('back', event)}>Back to Dashboard</button>
-            </div>
+            <MountainFooter />
         </div>
 
     )

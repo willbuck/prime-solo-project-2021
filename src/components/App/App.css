@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 html,
 body,
 #react-root {
@@ -7,6 +10,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 img {
@@ -71,6 +75,72 @@ Button
 
 }
 
+.delete {
+  display: inline-block;
+  padding: 5px 10px;
+  border-color: rgb(216, 10, 10);
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: rgb(216, 10, 10);
+  color: white;
+  font-size: .9 rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: rgb(226, 73, 73);
+  text-decoration: none;
+}
+.delete:active{
+  background-color: white;
+  color:rgb(216, 10, 10);
+  border-color: rgb(216, 10, 10);
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  transition: .2s;
+}
+.delete:focus{
+  outline: 0;
+}
+
+.btn:focus {
+  outline: 0;
+
+}
+
+.submit {
+  margin: 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-color: #2F6A24;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: #2F6A24;
+  color: white;
+  font-size: .9 rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: #5b9451;
+  text-decoration: none;
+}
+.submit:active{
+  background-color: white;
+  color:#2F6A24;
+  border-color: #2F6A24;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  transition: .2s;
+}
+.submit:focus{
+  outline: 0;
+}
+
+
+
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
   padding: 0;
@@ -124,4 +194,63 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
+}
+
+thead, tbody{
+  display: block;
+  border-collapse: collapse;
+}
+
+tbody {
+  height: 330px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+table{
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.koan-table{
+  width: 80%;
+}
+.koan-table td{
+  padding: 4px;
+}
+.koan-table thead{
+  background-color: #142B42;
+  color: white;
+}
+.koan-table th {
+  text-align: center;
+  padding: 10px;
+}
+.koan-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.koan-form{
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px 10px;
+}
+
+textarea{
+  resize: none;
+  height: 100px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+textarea:focus {
+  outline: 0;
+
+}
+textarea::placeholder{
+  font-family: 'Montserrat', sans-serif;
 }
