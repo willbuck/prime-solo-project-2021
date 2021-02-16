@@ -25,12 +25,14 @@ export default function UserKoan() {
 
     return(
         <div>
-            <h1>koans</h1>
+            <div className="head-container header">
+            <h2>Your Saved Koans:</h2>
             <p>{reflection.koan_text}</p>
             <div>
-                <button onClick={()=>handleClick(true)}>Reflect on Something else</button>
+                <button className="submit" onClick={()=>handleClick(true)}>Reflect on Something else</button>
             </div>
-            
+            </div>
+
             <MountainAbout />
         </div>
 

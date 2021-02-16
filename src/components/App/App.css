@@ -196,17 +196,6 @@ input {
   margin-bottom: 10px;
 }
 
-/* .koan-table thead, .koan-table tbody{
-  display: block;
-  border-collapse: collapse;
-}
-
-.koan-table tbody, .event-table tbody{
-  height: 330px;
-  overflow-y: auto;
-  overflow-x: hidden;
-} */
-
 table tbody {
   display: block;
   max-height: 300px;
@@ -221,6 +210,7 @@ table thead, table tbody tr {
   table-layout: fixed;
   border-collapse: collapse;
 }
+
 
 table{
   border-collapse: collapse;
@@ -245,7 +235,6 @@ thead{
 table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
 
 .koan-form{
   width: 400px;
@@ -277,7 +266,10 @@ textarea::placeholder{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  margin: auto;
 }
+
 
 
 .display-box{
@@ -293,4 +285,19 @@ textarea::placeholder{
 }
 .header{
   text-align: center;
+}
+
+.head-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  align-items: center;
+  padding-top: 0;
+}
+.button-container{
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  padding-bottom: 15px;
 }

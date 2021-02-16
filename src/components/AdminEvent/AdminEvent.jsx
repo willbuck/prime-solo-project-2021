@@ -107,8 +107,8 @@ useEffect(()=>{
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Time</th>
-                        <th>Duration</th>
+                        <th>Start Time</th>
+                        <th>Duration (m)</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
