@@ -29,6 +29,7 @@ export default function AdminHome() {
 
 
     return (
+        <>
         <div className="dashboard">
             <h2>Admin Dashboard</h2>
             <table>
@@ -59,7 +60,9 @@ export default function AdminHome() {
                     </tr>
                 </tbody>
             </table>
-            <MountainAbout/>
+        <div className="bumper"></div>
         </div>
+        <MountainAbout/>
+        </>
     )
 }

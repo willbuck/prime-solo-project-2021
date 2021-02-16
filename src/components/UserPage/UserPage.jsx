@@ -70,7 +70,7 @@ function UserPage() {
             <button className="submit" onClick={()=>handleClick(false)}>View Calendar</button>
           </div>
           </div>
-          <table>
+          <table className="user-event">
             <thead>
               <tr>
                 <td>Date</td>
@@ -86,7 +86,7 @@ function UserPage() {
                     <td>{detail.human_readable}</td>
                     <td>{detail.human_readable_time}</td>
                     <td>{detail.duration / 60000}</td>
-                    <td><button onClick={()=>enterZendo(detail)}>Enter Zendo</button></td>
+                    <td><button className="submit" onClick={()=>enterZendo(detail)}>Enter Zendo</button></td>
                   </tr>
                 )
               }))}

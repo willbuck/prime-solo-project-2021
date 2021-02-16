@@ -14,7 +14,7 @@ export default function UserCalendar() {
     return (
         <div>
             <div className="head-container header">
-                <h2>Calendar</h2>
+                <h2>Upcoming Events</h2>
             </div>
 
             <table>

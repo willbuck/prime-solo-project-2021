@@ -217,6 +217,7 @@ table{
   margin: auto;
   width: 80%;
   margin: auto;
+  text-align: center;
 }
 
 .koan-table td{
@@ -301,8 +302,15 @@ textarea::placeholder{
   justify-content: space-around;
   padding-bottom: 15px;
 }
+.about-container{
+  padding: 10px;
+}
 
 .bumper{
   height: 200px;
   width: auto;
+}
+
+.koan-container{
+  height: 75px;
 }
