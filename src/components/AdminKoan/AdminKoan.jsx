@@ -73,8 +73,8 @@ export default function AdminKoan() {
                 <table className="koan-table">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Koan Text</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

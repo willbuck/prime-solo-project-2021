@@ -196,39 +196,56 @@ input {
   margin-bottom: 10px;
 }
 
-thead, tbody{
+/* .koan-table thead, .koan-table tbody{
   display: block;
   border-collapse: collapse;
 }
 
-tbody {
+.koan-table tbody, .event-table tbody{
   height: 330px;
   overflow-y: auto;
   overflow-x: hidden;
+} */
+
+table tbody {
+  display: block;
+  max-height: 300px;
+  overflow-y: scroll;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 table{
   border-collapse: collapse;
   margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
-.koan-table{
-  width: 80%;
-}
 .koan-table td{
   padding: 4px;
 }
-.koan-table thead{
+
+thead{
   background-color: #142B42;
   color: white;
 }
+
 .koan-table th {
-  text-align: center;
   padding: 10px;
 }
-.koan-table tr:nth-child(even) {
+
+table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 
 .koan-form{
   width: 400px;
@@ -253,4 +270,27 @@ textarea:focus {
 }
 textarea::placeholder{
   font-family: 'Montserrat', sans-serif;
+}
+
+
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.display-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.del-col{
+  width: 40px;
+}
+.header{
+  text-align: center;
 }

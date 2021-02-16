@@ -1,5 +1,6 @@
 import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import MountainFooter from '../Mountains/MountainFooter'
 
 export default function UserCalendar() {
 
@@ -33,9 +34,7 @@ export default function UserCalendar() {
                 })}
             </tbody>
         </table>
-        <div>
-            <button onClick={()=>handleClick()}>Back to Portal</button>
-        </div>
+        <MountainFooter />
         </div>
     )
 }

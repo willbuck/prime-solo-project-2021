@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
+import MountainAbout from'../Mountains/MountainAbout'
 
 export default function AdminHome() {
 
@@ -28,7 +29,7 @@ export default function AdminHome() {
 
 
     return (
-        <div>
+        <div className="dashboard">
             <h2>Admin Dashboard</h2>
             <table>
                 <tbody>
@@ -37,7 +38,7 @@ export default function AdminHome() {
                             Add/Edit Events
                     </td>
                         <td>
-                            <button onClick={() => handleClick('event')}>Go</button>
+                            <button className="submit" onClick={() => handleClick('event')}>Go</button>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +46,7 @@ export default function AdminHome() {
                             Add/Edit Koans
                     </td>
                         <td>
-                            <button onClick={() => handleClick('koan')}>Go</button>
+                            <button className="submit" onClick={() => handleClick('koan')}>Go</button>
                         </td>
                     </tr>
                     <tr>
@@ -53,11 +54,12 @@ export default function AdminHome() {
                             View Records
                     </td>
                         <td>
-                            <button onClick={() => handleClick('records')}>View</button>
+                            <button className="submit" onClick={() => handleClick('records')}>View</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <MountainAbout/>
         </div>
     )
 }

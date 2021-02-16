@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import MountainFooter from '../Mountains/MountainFooter'
 
 export default function AdminRecords() {
 
@@ -20,17 +21,18 @@ export default function AdminRecords() {
 
   return (
     <div>
-      <div>
-        <button onClick={() => handleClick()}>Back to Dashboard</button>
+      <div className="header">
+      <h2>Zendo Records</h2>
       </div>
-      <table>
+
+      <table className="records-table">
         <thead>
           <tr>
-            <td>Date</td>
-            <td>Time</td>
-            <td>Duration</td>
-            <td>Attended</td>
-            <td>Left Early</td>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>Duration (m)</th>
+            <th>Attended</th>
+            <th>Left Early</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +50,7 @@ export default function AdminRecords() {
           })}
         </tbody>
       </table>
-
+          <MountainFooter/>
     </div>
 
 

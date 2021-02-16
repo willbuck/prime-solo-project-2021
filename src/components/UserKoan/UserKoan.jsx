@@ -1,6 +1,7 @@
 import {useHistory} from 'react-router-dom'
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import MountainAbout from '../Mountains/MountainAbout'
 
 export default function UserKoan() {
 
@@ -16,7 +17,7 @@ export default function UserKoan() {
             history.push('/user')
         }
     }
-    
+
     useEffect(()=>{
         dispatch({type: 'REFLECTION'})
     }, [])
@@ -29,9 +30,8 @@ export default function UserKoan() {
             <div>
                 <button onClick={()=>handleClick(true)}>Reflect on Something else</button>
             </div>
-            <div>
-                <button onClick={()=>handleClick(false)}>Back to Portal</button>
-            </div>
+            
+            <MountainAbout />
         </div>
 
     )
