@@ -70,6 +70,65 @@
     animation-timing-function: linear;
   }
 
+
+
+  .about-cloud-one{
+    width: 25%;
+    position: relative;
+    left: -450px;
+    z-index: -2;
+    animation-iteration-count: infinite;
+    animation-name: about-one;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+  .about-cloud-two{
+    width: 25%;
+    position: relative;
+    z-index: -2;
+    bottom: 100px;
+    left: -200px;
+    animation-iteration-count: infinite;
+    animation-name: about-two;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+  .about-cloud-three{
+    width: 25%;
+    position: relative;
+    z-index: -1;
+    bottom: 45px;
+    left: -1200px;
+    animation-iteration-count: infinite;
+    animation-name: about-three;
+    animation-duration: 75s;
+    animation-timing-function: linear;
+  }
+  .about-cloud-four{
+    width: 25%;
+    position: relative;
+    display: inline;
+    bottom: 50px;
+    z-index: 1;
+    left: -1800px;
+    animation-iteration-count: infinite;
+    animation-name: about-four;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+  .about-cloud-six{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: -600px;
+    bottom: 300px;
+    animation-iteration-count: infinite;
+    animation-name: about-six;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+
   .button-hover-in-bar{
     position: relative;
     z-index: 1;
@@ -80,10 +139,32 @@
     to{left: 1200px;}
   }
   @keyframes drift-two{
-    from{left: -100px;}
+    from{left: -200px;}
     to{left: 900px;}
   }
+
   @keyframes drift-three{
     from{left: -900px;}
     to{left: 900px;}
+  }
+
+  @keyframes about-one{
+    from{left: -450px;}
+    to{left: 1700px;}
+  }
+  @keyframes about-two{
+    from{left: -2000px;}
+    to{left: 1500px;}
+  }
+  @keyframes about-three{
+    from{left: -1200px;}
+    to{left: 1800px;}
+  }
+  @keyframes about-four{
+    from{left: -1800px;}
+    to{left: 1200px;}
+  }
+  @keyframes about-six{
+    from{left: -600px;}
+    to{left: 1800px;}
   }

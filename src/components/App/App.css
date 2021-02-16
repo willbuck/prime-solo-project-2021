@@ -301,3 +301,8 @@ textarea::placeholder{
   justify-content: space-around;
   padding-bottom: 15px;
 }
+
+.bumper{
+  height: 200px;
+  width: auto;
+}

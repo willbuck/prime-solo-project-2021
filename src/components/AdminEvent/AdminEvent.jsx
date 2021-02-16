@@ -99,7 +99,7 @@ useEffect(()=>{
                     <option value={45 * 60000}>45</option>
                     <option value={60 * 60000}>60</option>
                 </select>
-                <button onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
+                <button className="submit" onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
             </form>
             </div>
             <div>

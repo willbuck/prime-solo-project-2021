@@ -39,7 +39,7 @@ export default function ZendoBegin ({attended}) {
         <button onClick={()=>{handleClick()}}>Back to User Portal</button>
         {divmaker.map((object)=>{
             return(
-                <p key={object}>HERES ONE</p>
+                <p key={object}>DIV GENERATED PER USER IN ROOM</p>
             )
         })}
         </>
