@@ -2,7 +2,7 @@ import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux'
 //delete
-import MountainZendo from '../Mountains/MountainZendo'
+// import MountainZendo from '../Mountains/MountainZendo'
 
 //need axios and use effect, axios to get total sitting
 //use effect to call the get on page load?
@@ -42,17 +42,15 @@ export default function ZendoBegin ({attended}) {
 
     return(
         <>
-        <p>You're meditating</p>
-        <p>People sitting with you: {attended}</p>
+        <div className="header">
+        <h3>People sitting with you: {attended}</h3>
         <button className="delete" onClick={()=>{handleClick()}}>Back to User Portal</button>
+        </div>
         {divmaker.map((object)=>{
             return(
                 <img key={object} className={object} src="/zendo/cloud_1.png" />
             )
         })}
-        {/* delete after demo */}
-        <div className="bumper"></div>
-        <MountainZendo />
         </>
 
     )

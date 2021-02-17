@@ -35,7 +35,7 @@ import './ZendoAnimation.css';
 
 
 //delete this route after demo
-import ZendoBegin from '../ZendoBegin/ZendoBegin'
+// import ZendoBegin from '../ZendoBegin/ZendoBegin'
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function App() {
   }, [dispatch]);
 
   //delete attended after set up
-  const attended = 20;
+  // const attended = 20;
 
   return (
     <Router>
@@ -75,13 +75,13 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/zendo/demo"
           >
             <ZendoBegin attended={attended}/>
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
             // with authRedirect:
