@@ -9,13 +9,11 @@ import {
 import { useDispatch } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -30,7 +28,14 @@ import Zendo from '../Zendo/Zendo.jsx';
 import UserKoan from '../UserKoan/UserKoan';
 import UserCalendar from '../UserCalendar/UserCalendar';
 
+
 import './App.css';
+import './Animation.css';
+import './ZendoAnimation.css';
+
+
+//delete this route after demo
+// import ZendoBegin from '../ZendoBegin/ZendoBegin'
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +43,9 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
+  //delete attended after set up
+  // const attended = 20;
 
   return (
     <Router>
@@ -67,14 +75,14 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+          {/* <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
             exact
-            path="/info"
+            path="/zendo/demo"
           >
-            <InfoPage />
-          </ProtectedRoute>
+            <ZendoBegin attended={attended}/>
+          </ProtectedRoute> */}
+
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/zendo"
@@ -171,7 +179,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

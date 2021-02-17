@@ -10,7 +10,7 @@ router.get('/:time', rejectUnauthenticated, (req, res) => {
         const queryText = `
             SELECT "id", "human_readable", "human_readable_time", "date", "duration" from "event"
             WHERE "start" > $1
-            ORDER BY "date" DESC
+            ORDER BY "date" ASC;
         `
         pool.query(queryText, time).then((response) => {
             console.log('response from admin getEvent', response.rows);

@@ -1,4 +1,8 @@
 import {useHistory} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
+//delete
+// import MountainZendo from '../Mountains/MountainZendo'
 
 //need axios and use effect, axios to get total sitting
 //use effect to call the get on page load?
@@ -11,6 +15,8 @@ export default function ZendoBegin ({attended}) {
 
     //for the button
     const history = useHistory()
+    const dispatch = useDispatch()
+    const sessionInfo = useSelector(store=>store.zendo)
 
     const handleClick = () =>{
         console.log('leave room')
@@ -24,22 +30,25 @@ export default function ZendoBegin ({attended}) {
         let array = []
         let counter = 0;
         for(let i = 0; i < number; i++){
-            array.push(counter++)
+            array.push(`cloud_${counter++}`)
         }
+        console.log(array)
         return array
     }
+
 
     //div maker becomes the array I loop over to generate visual representation of people sitting
     const divmaker = makeArray(attended);
 
     return(
         <>
-        <p>You're meditating</p>
-        <p>People sitting with you: {attended}</p>
-        <button onClick={()=>{handleClick()}}>Back to User Portal</button>
+        <div className="header">
+        <h3>People sitting with you: {attended}</h3>
+        <button className="delete" onClick={()=>{handleClick()}}>Back to User Portal</button>
+        </div>
         {divmaker.map((object)=>{
             return(
-                <p key={object}>HERES ONE</p>
+                <img key={object} className={object} src="/zendo/cloud_1.png" />
             )
         })}
         </>

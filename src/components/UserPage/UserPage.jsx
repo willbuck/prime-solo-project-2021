@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+import MountainFooter from '../Mountains/MountainFooter'
 
 
 function UserPage() {
@@ -58,15 +59,18 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      {/* <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" /> */}
       <div className="App">
       <header className="App-header">
         <div className="splash-container">
-          <h2>User Portal</h2>
-          <h4>Other views from this page: list of all saved koans, full calendar view</h4>
-          <table>
+          <div className="head-container">
+          <h2>Welcome to the Virtual Zendo</h2>
+          <h4>View your saved koans, view the full calendar, or join an upcoming session</h4>
+          <div className="button-container">
+            <button className="submit" onClick={()=>handleClick(true)}>View all Koans</button>
+            <button className="submit" onClick={()=>handleClick(false)}>View Calendar</button>
+          </div>
+          </div>
+          <table className="user-event">
             <thead>
               <tr>
                 <td>Date</td>
@@ -82,19 +86,16 @@ function UserPage() {
                     <td>{detail.human_readable}</td>
                     <td>{detail.human_readable_time}</td>
                     <td>{detail.duration / 60000}</td>
-                    <td><button onClick={()=>enterZendo(detail)}>Enter Zendo</button></td>
+                    <td><button className="submit" onClick={()=>enterZendo(detail)}>Enter Zendo</button></td>
                   </tr>
                 )
               }))}
             </tbody>
           </table>
-          <div className="button-container">
-            <button onClick={()=>handleClick(true)}>View all Koans</button>
-            <button onClick={()=>handleClick(false)}>View Calendar</button>
-          </div>
         </div>
       </header>
     </div>
+    <MountainFooter />
     </div>
   );
 }

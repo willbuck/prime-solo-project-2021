@@ -23,10 +23,11 @@ export default function ZendoArrive () {
 
     return(
         <>
-        <p>Waiting for your {sessionInfo.duration / 60000} minute session to begin at {sessionInfo.time}</p>
-        <p>We'll see some nice and encouraging things in this view</p>
-        <p>We're waiting until the meditation starts</p>
-        <button onClick={()=>backToSplash()}>Back to User Portal</button>
+        <div className="header">
+        <h3>Waiting for our {sessionInfo.duration / 60000} minute meditation to start at {sessionInfo.time},</h3>
+        <p>Please find your seat.</p>
+        <button className="delete" onClick={()=>backToSplash()}>Back to User Portal</button>
+        </div>
         </>
     )
 }

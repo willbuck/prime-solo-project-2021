@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import ZendoArrive from '../ZendoArrive/ZendoArrive.jsx'
 import ZendoBegin from '../ZendoBegin/ZendoBegin.jsx'
 import ZendoEnd from '../ZendoEnd/ZendoEnd.jsx'
+import MountainZendo from '../Mountains/MountainZendo'
 
 import axios from 'axios';
 
@@ -97,11 +98,13 @@ export default function Zendo() {
   }, [])
 
   return (
+    <>
     <div className="App">
       <header className="App-header">
-        <p>Current timer stage: {timerStage}</p>
         {componentSwitch(timerStage)}
       </header>
     </div>
+    <MountainZendo />
+    </>
   );
 }

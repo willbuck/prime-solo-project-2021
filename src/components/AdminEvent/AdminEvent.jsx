@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import MountainFooter from '../Mountains/MountainFooter'
 
 export default function AdminEvent() {
 
@@ -71,8 +72,9 @@ useEffect(()=>{
 
     return (
         <div>
-            <p></p>
-            <form>
+            <div className="display-box">
+            <h2>Schedule New Event:</h2>
+            <form className="event-form">
                 <label htmlFor="start">Start date:</label>
 
                 <input
@@ -97,19 +99,17 @@ useEffect(()=>{
                     <option value={45 * 60000}>45</option>
                     <option value={60 * 60000}>60</option>
                 </select>
-                <button onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
+                <button className="submit" onClick={(event) => handleClick(dateTime, duration, event)}>Submit</button>
             </form>
-            <div>
-                <button onClick={()=>handleBack()}>Back to Dashboard</button>
             </div>
             <div>
-            <table>
+            <table className="event-table">
                 <thead>
                     <tr>
-                        <td>Date</td>
-                        <td>Time</td>
-                        <td>Duration</td>
-                        <td>Delete</td>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>Duration (m)</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,13 +119,14 @@ useEffect(()=>{
                                 <td>{single.human_readable}</td>
                                 <td>{single.human_readable_time}</td>
                                 <td>{single.duration / 60000}</td>
-                                <td><button onClick={()=>handleDelete(single.id)}>Delete</button></td>
+                                <td><button className="delete" onClick={()=>handleDelete(single.id)}>Delete</button></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
             </div>
+            <MountainFooter/>
         </div>
     )
 }

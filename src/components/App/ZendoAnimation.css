@@ -1,0 +1,325 @@
+.cloud_0{
+    width: 15%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    top: 200px;
+    animation-iteration-count: infinite;
+    animation-name: zero;
+    animation-duration: 120s;
+    animation-timing-function: linear;
+  }
+.cloud_1{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    top: 300px;
+    animation-iteration-count: infinite;
+    animation-name: one;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+.cloud_2{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    top: 350px;
+    animation-iteration-count: infinite;
+    animation-name: two;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+.cloud_3{
+    width: 10%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    top: 200px;
+    animation-iteration-count: infinite;
+    animation-name: three;
+    animation-duration: 120s;
+    animation-timing-function: linear;
+  }
+.cloud_4{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    top: 200px;
+    animation-iteration-count: infinite;
+    animation-name: four;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+.cloud_5{
+    width: 30%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    top: 80px;
+    animation-iteration-count: infinite;
+    animation-name: five;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+.cloud_6{
+    width: 10%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    top: 100px;
+    animation-iteration-count: infinite;
+    animation-name: six;
+    animation-duration: 120s;
+    animation-timing-function: linear;
+  }
+.cloud_7{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    top: 100px;
+    animation-iteration-count: infinite;
+    animation-name: seven;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+.cloud_8{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    top: 100px;
+    animation-iteration-count: infinite;
+    animation-name: eight;
+    animation-duration: 95s;
+    animation-timing-function: linear;
+  }
+.cloud_9{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    top: 100px;
+    animation-iteration-count: infinite;
+    animation-name: nine;
+    animation-duration: 70s;
+    animation-timing-function: linear;
+  }
+.cloud_10{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    top: 0px;
+    animation-iteration-count: infinite;
+    animation-name: ten;
+    animation-duration: 135s;
+    animation-timing-function: linear;
+  }
+.cloud_11{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    top: 10px;
+    animation-iteration-count: infinite;
+    animation-name: eleven;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+.cloud_12{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    top: 10px;
+    animation-iteration-count: infinite;
+    animation-name: twelve;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+.cloud_13{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    bottom: 60px;
+    animation-iteration-count: infinite;
+    animation-name: thirteen;
+    animation-duration: 135s;
+    animation-timing-function: linear;
+  }
+.cloud_14{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    bottom: 80px;
+    animation-iteration-count: infinite;
+    animation-name: fourteen;
+    animation-duration: 95s;
+    animation-timing-function: linear;
+  }
+.cloud_15{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    bottom: 100px;
+    animation-iteration-count: infinite;
+    animation-name: fifteen;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+.cloud_16{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    bottom: 100px;
+    animation-iteration-count: infinite;
+    animation-name: sixteen;
+    animation-duration: 140s;
+    animation-timing-function: linear;
+  }
+.cloud_17{
+    width: 20%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    bottom: 180px;
+    animation-iteration-count: infinite;
+    animation-name: seventeen;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+  }
+.cloud_18{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    bottom: 200px;
+    animation-iteration-count: infinite;
+    animation-name: eighteen;
+    animation-duration: 50s;
+    animation-timing-function: linear;
+  }
+.cloud_19{
+    width: 10%;
+    position: relative;
+    display: inline;
+    z-index: -1;
+    left: 0px;
+    bottom: 380px;
+    animation-iteration-count: infinite;
+    animation-name: nineteen;
+    animation-duration: 145s;
+    animation-timing-function: linear;
+  }
+
+
+
+
+
+@keyframes zero{
+    from{left: -400px;}
+    to{left: 1500px;}
+  }
+  @keyframes one{
+    from{left: -750px;}
+    to{left: 1500px;}
+  }
+  @keyframes two{
+    from{left: -1250px;}
+    to{left: 1200px;}
+  }
+  @keyframes three{
+    from{left: -1350px;}
+    to{left: 1200px;}
+  }
+  @keyframes four{
+    from{left: -1700px;}
+    to{left: 800px;}
+  }
+  @keyframes five{
+    from{left: -1700px;}
+    to{left: 1500px;}
+  }
+  @keyframes six{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes seven{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes eight{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes nine{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes ten{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes eleven{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes twelve{
+    from{left: -1800px;}
+    to{left: 1600px;}
+  }
+  @keyframes thirteen{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes fourteen{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes fifteen{
+    from{left: -1800px;}
+    to{left: 1600px;}
+  }
+  @keyframes sixteen{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes seventeen{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
+  @keyframes eighteen{
+    from{left: -1800px;}
+    to{left: 1600px;}
+  }
+  @keyframes nineteen{
+    from{left: -1600px;}
+    to{left: 1600px;}
+  }
