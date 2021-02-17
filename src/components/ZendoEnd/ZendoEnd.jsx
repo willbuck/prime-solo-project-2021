@@ -24,10 +24,10 @@ export default function ZendoEnd () {
         <p>Thank You for sitting, here's your koan:</p>
         <div>
         <p>{sessionInfo.koan.koan_text}</p>
-        <button onClick={()=>handleClick(sessionInfo.koan.id)}>Save</button>
+        <button className="submit" onClick={()=>handleClick(sessionInfo.koan.id)}>Save</button>
         </div>
 
-        <button onClick={()=>{handleClick(false)}}>Back to User Portal</button>
+        <button className="delete" onClick={()=>{handleClick(false)}}>Back to User Portal</button>
         </>
 
     )

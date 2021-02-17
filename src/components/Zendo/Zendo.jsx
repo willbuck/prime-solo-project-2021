@@ -101,7 +101,6 @@ export default function Zendo() {
     <>
     <div className="App">
       <header className="App-header">
-        <p>Current timer stage: {timerStage}</p>
         {componentSwitch(timerStage)}
       </header>
     </div>

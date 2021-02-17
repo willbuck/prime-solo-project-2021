@@ -1,0 +1,33 @@
+.cloud_0{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 1;
+    left: 0px;
+    bottom: 0px;
+    animation-iteration-count: infinite;
+    animation-name: about-six;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+.cloud_1{
+    width: 25%;
+    position: relative;
+    display: inline;
+    z-index: 0;
+    left: 0px;
+    bottom: 0px;
+    animation-iteration-count: infinite;
+    animation-name: about-six;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+  }
+
+@keyframes one{
+    from{left: -450px;}
+    to{left: 1700px;}
+  }
+  @keyframes two{
+    from{left: -2000px;}
+    to{left: 1500px;}
+  }

@@ -30,6 +30,7 @@ import UserCalendar from '../UserCalendar/UserCalendar';
 
 import './App.css';
 import './Animation.css';
+import './ZendoAnimation.css';
 
 function App() {
   const dispatch = useDispatch();
