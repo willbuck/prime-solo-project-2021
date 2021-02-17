@@ -1,6 +1,8 @@
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux'
+//delete
+import MountainZendo from '../Mountains/MountainZendo'
 
 //need axios and use effect, axios to get total sitting
 //use effect to call the get on page load?
@@ -48,6 +50,9 @@ export default function ZendoBegin ({attended}) {
                 <img key={object} className={object} src="/zendo/cloud_1.png" />
             )
         })}
+        {/* delete after demo */}
+        <div className="bumper"></div>
+        <MountainZendo />
         </>
 
     )

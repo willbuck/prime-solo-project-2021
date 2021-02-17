@@ -28,9 +28,14 @@ import Zendo from '../Zendo/Zendo.jsx';
 import UserKoan from '../UserKoan/UserKoan';
 import UserCalendar from '../UserCalendar/UserCalendar';
 
+
 import './App.css';
 import './Animation.css';
 import './ZendoAnimation.css';
+
+
+//delete this route after demo
+import ZendoBegin from '../ZendoBegin/ZendoBegin'
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +43,9 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
+  //delete attended after set up
+  const attended = 20;
 
   return (
     <Router>
@@ -66,6 +74,13 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/zendo/demo"
+          >
+            <ZendoBegin attended={attended}/>
           </ProtectedRoute>
 
           <ProtectedRoute
