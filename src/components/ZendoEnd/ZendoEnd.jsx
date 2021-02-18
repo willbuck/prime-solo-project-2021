@@ -17,10 +17,19 @@ export default function ZendoEnd () {
 
     }
 
+    const handlePlay = (event) =>{
+        let sound = event.target;
+        sound = null;
+        console.log('sound played')
+    }
+
 
     const sessionInfo = useSelector(store=>store.zendo)
     return(
         <>
+        <audio id="musicplayer" type="audio/mp3" autoPlay onPlay={(event)=>handlePlay(event)}>
+            <source src="/zendo/end_2_bells.mp3"/>
+        </audio>
         <p>Thank You for sitting, here's your koan:</p>
         <div>
         <p>{sessionInfo.koan.koan_text}</p>

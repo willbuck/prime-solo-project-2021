@@ -17,11 +17,7 @@ export default function ZendoArrive () {
         history.push('/user')
     }
 
-    const handlePlay = (event) =>{
-        let sound = event.target;
-        sound = null;
-        console.log('sound played')
-    }
+    
 
     useEffect(()=>{
         dispatch({type: 'UPDATE_EVENT', payload: {id: sessionInfo.id}})
@@ -29,9 +25,6 @@ export default function ZendoArrive () {
 
     return(
         <>
-        <audio id="musicplayer" type="audio/mp3" autoPlay onPlay={(event)=>handlePlay(event)}>
-            <source src="/zendo/start_3_bells.mp3"/>
-        </audio>
         <div className="header">
         <h3>Waiting for our {sessionInfo.duration / 60000} minute meditation to start at {sessionInfo.time},</h3>
         <p>Please find your seat.</p>

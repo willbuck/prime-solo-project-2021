@@ -1,7 +1,7 @@
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux'
-import BellStart from '../BellStart/BellStart'
+
 //delete
 // import MountainZendo from '../Mountains/MountainZendo'
 
@@ -37,16 +37,23 @@ export default function ZendoBegin ({attended}) {
         return array
     }
 
+    const handlePlay = (event) =>{
+        let sound = event.target;
+        sound = null;
+        console.log('sound played')
+    }
 
     //div maker becomes the array I loop over to generate visual representation of people sitting
     const divmaker = makeArray(attended);
 
     return(
         <>
+        <audio id="musicplayer" type="audio/mp3" autoPlay onPlay={(event)=>handlePlay(event)}>
+            <source src="/zendo/start_3_bells.mp3"/>
+        </audio>
         <div className="header">
         <h3>People sitting with you: {attended}</h3>
         <button className="delete" onClick={()=>{handleClick()}}>Back to User Portal</button>
-        <BellStart url={"/public/zendo/start_3_bells.mp3"} />
         </div>
         {divmaker.map((object)=>{
             return(
