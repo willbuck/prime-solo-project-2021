@@ -1,6 +1,7 @@
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux'
+import BellStart from '../BellStart/BellStart'
 //delete
 // import MountainZendo from '../Mountains/MountainZendo'
 
@@ -25,7 +26,7 @@ export default function ZendoBegin ({attended}) {
         history.push('/user')
     }
 
-    //makeArray lets me create divs on the screen, one for each person sitting
+    //makeArray lets me generate imgs on the screen, one for each person sitting
     function makeArray(number) {
         let array = []
         let counter = 0;
@@ -45,6 +46,7 @@ export default function ZendoBegin ({attended}) {
         <div className="header">
         <h3>People sitting with you: {attended}</h3>
         <button className="delete" onClick={()=>{handleClick()}}>Back to User Portal</button>
+        <BellStart url={"/public/zendo/start_3_bells.mp3"} />
         </div>
         {divmaker.map((object)=>{
             return(
