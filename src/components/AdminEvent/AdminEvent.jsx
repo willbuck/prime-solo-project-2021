@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import MountainFooter from '../Mountains/MountainFooter'
 
 export default function AdminEvent() {
@@ -8,7 +7,6 @@ export default function AdminEvent() {
     //reducer for events in DB, called on load and put on DOM
     const eventList = useSelector(store=>store.event)
 
-    const history = useHistory();
     const dispatch = useDispatch();
 
     //state to hold user input for date/time and duration
@@ -17,23 +15,16 @@ export default function AdminEvent() {
 
     //handles form submit, packages data for DB
     const handleClick = (eventDate, eventTime, event) => {
-        //still rough, pare down after GET/.map showing up right
+
         event.preventDefault();
         //form validation
         if(!eventDate || !eventTime ){
             alert('please enter all the event information')
         }
-        //packages data and sends to DB
+
         else{
-
+        //if all information is present, makes new Date() based on user input, then newEvent packages it to be stored in the database
         const dateOfEvent = new Date(eventDate)
-
-        // const timeStart =
-        //     ((dateOfEvent.getHours() * 3600000) + (dateOfEvent.getMinutes() * 60000) +
-        //     (dateOfEvent.getSeconds() * 1000) + dateOfEvent.getMilliseconds())
-
-        // console.log('gettime function', dateOfEvent.getTime())
-
 
         //object for sever
         const newEvent = {
@@ -50,18 +41,13 @@ export default function AdminEvent() {
     }
 }
 
-//back to dashboard
-const handleBack = () => {
-    history.push('/admin')
-}
-
 //delete event from user view
 const handleDelete = (eventID) => {
     console.log('in delete for ID', eventID)
     dispatch({type: 'DELETE_EVENT', payload: eventID})
 }
 
-//this moment in time, used for sorting!
+//this moment in time, used to sort events on page, send as payload
 const now = new Date().getTime()
 //loads events as page loads
 useEffect(()=>{
@@ -94,6 +80,7 @@ useEffect(()=>{
                     value={duration}
                     onChange={(event)=>setDuration(event.target.value)}>
                     <option value={0} disabled>Minutes:</option>
+                    <option value={1 * 60000}>1</option>
                     <option value={15 * 60000}>15</option>
                     <option value={30 * 60000}>30</option>
                     <option value={45 * 60000}>45</option>

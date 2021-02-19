@@ -6,7 +6,7 @@ import MountainFooter from '../Mountains/MountainFooter'
 
 
 function UserPage() {
-  //user stores user info n page
+  //user stores user info in page
   const user = useSelector(store=> store.user);
   const events = useSelector(store=>store.event);
   const koan = useSelector(store=>store.koan)
@@ -17,8 +17,6 @@ function UserPage() {
 
   //dispatches event details along with koan to it's own reducer that
   //stores all information for the upcoming event
-
-  //START HERE TOMORROW
   const enterZendo = (singleEvent) => {
     console.log('lone event in dispatch', singleEvent)
     dispatch({type: 'ZENDO_DETAILS', payload:{
@@ -66,7 +64,7 @@ function UserPage() {
           <h2>Welcome to the Virtual Zendo</h2>
           <h4>View your saved koans, view the full calendar, or join an upcoming session</h4>
           <div className="button-container">
-            <button className="submit" onClick={()=>handleClick(true)}>View all Koans</button>
+            <button className="submit" onClick={()=>handleClick(true)}>View Koan Library</button>
             <button className="submit" onClick={()=>handleClick(false)}>View Calendar</button>
           </div>
           </div>

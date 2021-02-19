@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+
 import MountainFooter from '../Mountains/MountainFooter'
+
+//shows user a simple calendar of upcoming events
 
 export default function UserCalendar() {
 
-    const history = useHistory();
     const calendar = useSelector(store => store.calendar)
 
-    const handleClick = () => {
-        history.push('/user')
-    }
 
     return (
         <div>
