@@ -1,15 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function ZendoEnd() {
 
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const [saved, setSaved] = useState(true)
+
     //buttons save koans or navigate back to portal
     const handleClick = (save) => {
         if (save) {
             dispatch({ type: 'SAVE_KOAN', payload: { koan: save } })
+            setSaved(false)
         }
         else {
             console.log('leave room')
@@ -37,7 +41,7 @@ export default function ZendoEnd() {
                 <p>Thank You for sitting with us, save this koan for later or return to the portal</p>
                 <div>
                     <p>{sessionInfo.koan.koan_text}</p>
-                    <button className="submit" onClick={() => handleClick(sessionInfo.koan.id)}>Save</button>
+                    {saved ? <button className="submit" onClick={() => handleClick(sessionInfo.koan.id)}>Save</button> : <span>Saved</span>}
                 </div>
 
                 <button className="delete" onClick={() => { handleClick(false) }}>Back to User Portal</button>
