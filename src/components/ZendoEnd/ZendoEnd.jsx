@@ -41,7 +41,7 @@ export default function ZendoEnd() {
                 <p>Thank You for sitting with us, save this koan for later or return to the portal</p>
                 <div>
                     <p>{sessionInfo.koan.koan_text}</p>
-                    {saved ? <button className="submit" onClick={() => handleClick(sessionInfo.koan.id)}>Save</button> : <span>Saved</span>}
+                    {saved ? <button className="submit" onClick={() => handleClick(sessionInfo.koan.id)}>Save</button> : <span class="submit">Saved</span>}
                 </div>
 
                 <button className="delete" onClick={() => { handleClick(false) }}>Back to User Portal</button>

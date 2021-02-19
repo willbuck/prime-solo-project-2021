@@ -39,6 +39,7 @@ function AboutPage() {
       </div>
     <div className="bumper"></div>
     <MountainAbout />
+    <h4 className="copy">&copy; Viperetta LLC</h4>
     </>
   );
 }

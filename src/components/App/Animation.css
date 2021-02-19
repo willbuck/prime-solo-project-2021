@@ -11,7 +11,13 @@
     left: 0;
     bottom: 0;
   }
-
+.copy{
+  position: fixed;
+    width: 100%;
+    left: 15px;
+    bottom: 0px;
+    color: white;
+}
 
 /* clouds for login page */
   .cloud-one{
