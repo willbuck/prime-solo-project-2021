@@ -1,3 +1,6 @@
+//mountain and clouds for the logic in view.
+//clouds animate in App/Animation.css
+
 export default function MountainLogin() {
     return(
         <>

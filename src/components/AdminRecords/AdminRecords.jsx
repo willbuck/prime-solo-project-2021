@@ -1,19 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import MountainFooter from '../Mountains/MountainFooter'
 
 export default function AdminRecords() {
 
-  const history = useHistory()
   const dispatch = useDispatch()
-  const now = new Date().getTime()
 
   const records = useSelector(store => store.event)
 
-  const handleClick = () => {
-    history.push('/admin')
-  }
+  //now used to sort records from database
+  const now = new Date().getTime()
 
   useEffect(()=>{
     dispatch({type: 'GET_RECORDS', payload: now})

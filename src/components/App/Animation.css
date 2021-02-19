@@ -1,52 +1,56 @@
+/* formatting mountains for login page, about page, and footers */
 .login-mountain{
     position: relative;
     bottom: 80px;
     width: 100%
   }
 
-.about-mountain{
+.about-mountain, .footer-mountain{
     position: fixed;
     width: 100%;
     left: 0;
     bottom: 0;
   }
-  
-.footer-mountain{
-    position: fixed;
+.copy{
+  position: fixed;
     width: 100%;
-    left: 0;
-    bottom: 0;
-  }
+    left: 15px;
+    bottom: 0px;
+    color: white;
+}
 
-
-
+/* clouds for login page */
   .cloud-one{
     width: 25%;
     position: relative;
-    left: -300px;
+    left: 0px;
     bottom: 300px;
     animation-name: drift-one;
+    animation-iteration-count: infinite;
     animation-duration: 60s;
     animation-timing-function: linear;
   }
+
   .cloud-two{
     width: 25%;
     position: relative;
     z-index: -2;
-    left: -100px;
+    left: 0px;
     bottom: 340px;
     animation-name: drift-two;
-    animation-duration: 60s;
+    animation-duration: 180s;
+    animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
   .cloud-three{
     width: 25%;
     position: relative;
     z-index: -1;
-    left: -900px;
+    left: 0px;
     bottom: 325px;
     animation-name: drift-three;
-    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-duration: 150s;
     animation-timing-function: linear;
   }
   .cloud-four{
@@ -54,10 +58,11 @@
     position: relative;
     display: inline;
     z-index: -1;
-    left: -900px;
+    left: 0px;
     bottom: 325px;
-    animation-name: drift-three;
-    animation-duration: 60s;
+    animation-name: drift-four;
+    animation-iteration-count: infinite;
+    animation-duration: 85s;
     animation-timing-function: linear;
   }
   .cloud-six{
@@ -65,15 +70,40 @@
     position: relative;
     display: inline;
     z-index: 1;
-    left: -100px;
-    bottom: 500px;
-    animation-name: drift-three;
-    animation-duration: 60s;
+    left: 0px;
+    bottom: 600px;
+    animation-name: drift-six;
+    animation-iteration-count: infinite;
+    animation-duration: 55s;
     animation-timing-function: linear;
+  }
+
+  @keyframes drift-one{
+    from{left: -700px;}
+    to{left: 1500px;}
+  }
+  @keyframes drift-two{
+    from{left: -750px;}
+    to{left: 1500px;}
+  }
+  @keyframes drift-three{
+    from{left: -1400px;}
+    to{left: 900px;}
+  }
+  @keyframes drift-four{
+    from{left: -1800px;}
+    to{left: 900px;}
+  }
+  @keyframes drift-six{
+    from{left: -1100px;}
+    to{left: 1500px;}
   }
 
 
 
+
+
+/* clouds for about page */
   .about-cloud-one{
     width: 25%;
     position: relative;
@@ -136,19 +166,7 @@
     z-index: 1;
   }
 
-  @keyframes drift-one{
-    from{left: -300px;}
-    to{left: 1200px;}
-  }
-  @keyframes drift-two{
-    from{left: -200px;}
-    to{left: 900px;}
-  }
 
-  @keyframes drift-three{
-    from{left: -900px;}
-    to{left: 900px;}
-  }
 
   @keyframes about-one{
     from{left: -450px;}

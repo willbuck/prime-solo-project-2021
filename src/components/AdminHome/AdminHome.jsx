@@ -8,7 +8,7 @@ export default function AdminHome() {
 
     const history = useHistory()
 
-    //DRY function for routing
+    //routes admin to three different views
     const handleClick = (input) => {
         switch (input) {
             case 'event':
@@ -55,7 +55,7 @@ export default function AdminHome() {
                             View Records
                     </td>
                         <td>
-                            <button className="submit" onClick={() => handleClick('records')}>View</button>
+                            <button className="submit" onClick={() => handleClick('records')}>Go</button>
                         </td>
                     </tr>
                 </tbody>

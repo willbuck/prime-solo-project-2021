@@ -1,10 +1,7 @@
 import React from 'react';
 import MountainAbout from '../Mountains/MountainAbout'
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+//any user can see the about page. it features a writeup about the app and an animation
 
 function AboutPage() {
   return (
@@ -42,6 +39,7 @@ function AboutPage() {
       </div>
     <div className="bumper"></div>
     <MountainAbout />
+    <h4 className="copy">&copy; Viperetta LLC</h4>
     </>
   );
 }

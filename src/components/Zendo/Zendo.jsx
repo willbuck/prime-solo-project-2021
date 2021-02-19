@@ -8,7 +8,9 @@ import MountainZendo from '../Mountains/MountainZendo'
 import axios from 'axios';
 
 
-
+//main shell that holds most of the functionality of the app.
+//it sets and runs the timers, then calls different components
+//depending on which stage the timer is in
 
 export default function Zendo() {
 

@@ -1,24 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import MountainFooter from '../Mountains/MountainFooter'
 
-
-//page needs to GET koans on load, arm them with a DELETE button
-//DISPATCH get request for all koans to SAGA
-//store GET in REDUCER -> RENDER REDUCER contents on page LOAD
-
-//BUILD FORM to POST new koan
-//PROTECT POST, GET, DELETE routes on SERVER from KOAN ROUTER
+//form allows admin to add or delete koans
 
 export default function AdminKoan() {
 
-    //state to store user in put
+    //state to store user input
     const [koan, setKoan] = useState('');
+
     //reducer with all koans
     const koanList = useSelector(store => store.koan)
 
-    const history = useHistory();
     const dispatch = useDispatch();
 
     //dispatch GET to koan.saga.js
@@ -26,16 +19,11 @@ export default function AdminKoan() {
         dispatch({ type: 'GET_KOANS' })
     }
 
-    //buttons send user back on to dashboard OR post
-
-    //ADD DELETE ROUTE
+    //buttons either submit or delete
     const handleClick = (type, event) => {
         event.preventDefault();
 
-        if (type === 'back') {
-            history.push('/admin');
-        }
-        else if (type === 'submit') {
+        if (type === 'submit') {
             console.log('submitting')
             dispatch({ type: 'POST_KOAN', payload: { koan: koan } })
             setKoan('');

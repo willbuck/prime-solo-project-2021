@@ -3,19 +3,17 @@ import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import MountainAbout from '../Mountains/MountainAbout'
 
+
+//shows a user a random koan from their library
 export default function UserKoan() {
 
     const history = useHistory()
     const dispatch = useDispatch()
     const reflection = useSelector(store=>store.reflection)
 
-    const handleClick = (condition) => {
-        if(condition){
+    //gets user new koan from the library or sends the user back ot the
+    const handleClick = () => {
             dispatch({type: 'REFLECTION'})
-        }
-        else{
-            history.push('/user')
-        }
     }
 
     useEffect(()=>{
@@ -30,7 +28,7 @@ export default function UserKoan() {
             <h2>Your Saved Koans:</h2>
             <p className="koan-container">{reflection.koan_text}</p>
             <div>
-                <button className="submit" onClick={()=>handleClick(true)}>Reflect on Something else</button>
+                <button className="submit" onClick={()=>handleClick()}>Show Me Another</button>
             </div>
             </div>
 

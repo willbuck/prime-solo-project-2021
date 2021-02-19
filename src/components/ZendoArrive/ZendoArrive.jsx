@@ -6,6 +6,8 @@ import {useSelector, useDispatch} from 'react-redux'
 
 export default function ZendoArrive () {
 
+    //first component called in the zendo sequence. shows the user a waiting screen
+
     const sessionInfo = useSelector(store=>store.zendo)
 
     const dispatch = useDispatch()
@@ -17,7 +19,7 @@ export default function ZendoArrive () {
         history.push('/user')
     }
 
-    
+
 
     useEffect(()=>{
         dispatch({type: 'UPDATE_EVENT', payload: {id: sessionInfo.id}})
