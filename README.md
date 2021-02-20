@@ -35,7 +35,7 @@ About page
 
 ## Installation
 1. Type `npm install` to install all dependencies
-1. Create Postgres/Postico database per information in `data.sql`
+1. Create Postgres/Postico database per information in `database.sql`
 1. Type `npm run server` to start your NodeJS server
 1. Type `npm run client` to launch the react app on your browser
 
