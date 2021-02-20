@@ -1,21 +1,82 @@
 
-# EDA Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# Prime Digital Academy Solo Project: Virtual Zendo
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+
+## Description
+I think the world is a wild and wonderful place, and it’s important to find a quiet space as a respite from the infinite cacophony of now. I found a quiet place, and I found it in zen meditation. Before COVID, I’d just begun to sit at different zen centers in the metro with others, searching for community. When I sat with a group, I felt myself bolstered by the invisible strength of others.
+
+
+A lot of centers adapted to the pandemic by hosting sessions on zoom. I can say confidently, that while I appreciate what video conferencing does to help keep us connected, I am dissatisfied with it as a tool in this specific application. So, I built something quiet, a virtual zendo we could share while we sit, one that emulates the physical experience of sitting with others, one that doesn’t open a window into our own lives but pulls back the curtain on the space we occupy together.
+
+The tool is the virtual zendo. An online portal where users can join a meditation.
+A series of timers will control what the user sees displayed on their screen, to let them know they’re
+waiting for a session to start or that the session is already under way or that they’ve finished and
+it's time to dust off their cushion and put it away.
+And, all the while, this application shows you how many people are sitting with you.
+To help show that in a time of isolation, even when we’re by ourselves that we are part of something bigger,
+that we are not alone.
+
+## Screenshots
+Landing page after you first open the app
+![Home page](/public/zendo/home.png)
+User portal
+![User portal](/public/zendo/portal.png)
+Admin Add Event Page
+![Admin add event page](/public/zendo/add.png)
+About page
+![About page](/public/zendo/about.png)
+
+### Prerequisites
+ - This project uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+
+- [Node.js](https://nodejs.org/en/)
+- [PostrgeSQL](https://www.postgresql.org/)
+- [Nodemon](https://nodemon.io/)
+
+## Installation
+1. Type `npm install` to install all dependencies
+1. Create Postgres/Postico database per information in `data.sql`
+1. Type `npm run server` to start your NodeJS server
+1. Type `npm run client` to launch the react app on your browser
+
+## Built With
+* NodeJS
+* Postgres/Postico
+* React
+* Redux
+* Express
+* Passport
+
+### Usage
+* As a User
+1. After logging in, a user will see a list of the most recent upcoming events. They can join an event by clicking the corresponding button.
+1. A series of timers will run the next three views.
+  1. The first view tells the user when their session will begin and at what time. When the session beins, a tone will sound.
+  1. The second view will show the user how many people are sitting in meditation with them. When the session is done, another tone will sound.
+  1. The third view will show the user a koan and allow them to save it to their own library. A button will navigate them back to their portal.
+1. From the portal, the user can view a list of all upcoming events or view the koans they've previously saved.
+
+* As an Admin:
+1. After logging in, the admin can create/delete events and koans as well as viewing all the records from the zendo.
+1. In the 'event' view, the admin can set the time for the event to start, as well as the duration of the session.
+1. In the 'koan' view, the admin can add additional koans to the library accessed by the user after a meditation.
+1. The 'records' view will show the admin how many people have joined a session, and how many have left early
+
+
+### Acknowledgements
+Huge thanks to everyone at [Prime Digital Academy](http://primeacademy.io)for teaching me the skills I needed to build something like this. Huge thanks especially to [Dane Smith](https://github.com/drhowser), [Kris Szafranski](https://github.com/kdszafranski), and [Edan Schwartz](https://github.com/eschwartz).
+
+Thanks also to my classmates, the whole Zhu Cru, you're always thoughtful, inquisitive, helpful!
+
+
+
+
 
 ## Use the Template for This Repository (Don't Clone)
 
 - Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
 
 
-## Prerequisites
-
-Before you get started, make sure you have the following software installed on your computer:
-
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
 
 ## Create database and table
 
