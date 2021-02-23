@@ -30,13 +30,13 @@ About page
  - This project uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 - [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- [Docker](https://docs.docker.com/engine/install/)
+- [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Installation
+1. Run `docker-compose up` to start your postgres server
 1. Type `npm install` to install all dependencies
-1. Create Postgres/Postico database per information in `database.sql`
-1. Type `npm run server` to start your NodeJS server
+1. Type `APP_DB_USER=zendo_app APP_DB_PASSWORD=todo_changeme_find_your_seat npm run server` to start your NodeJS server
 1. Type `npm run client` to launch the react app on your browser
 
 ## Built With

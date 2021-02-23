@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - "APP_DB_USER=zendo_app"
+      - "APP_DB_PASSWORD=todo_changeme_find_your_seat"
+      - "APP_DB_DATABASE=zendo"
+      - "POSTGRES_PASSWORD=todo_change_me"
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/provision/postgres/init:/docker-entrypoint-initdb.d
+
+  express_server:
+
+
