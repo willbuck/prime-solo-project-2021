@@ -13,6 +13,4 @@ services:
     volumes:
       - ./docker/provision/postgres/init:/docker-entrypoint-initdb.d
 
-  express_server:
-
 

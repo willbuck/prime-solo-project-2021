@@ -1,6 +1,9 @@
 This file tracks changes from the original repo:
 
 - 2021-2-23 willbuck
+  - adds a unit test 
+
+- 2021-2-23 willbuck
     - Adds changelog, todo
     - Adds docker-compose to run postgres in a container
     - Adds init scripts for postgres user, db, schema & sample users
