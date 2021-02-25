@@ -63,6 +63,11 @@ About page
 1. The 'records' view will show the admin how many people have joined a session, and how many have left early
 
 
+### Testing
+* use 'npm run test' to run unit tests
+* use 'npm run cypress:open' to open the interactive Cypress e2e test runner (note: requires client, server & dockerized postgres to be successful)
+* use 'npm run cypress:run' to simply run the e2e tests once & see results 
+
 ### Acknowledgements
 Huge thanks to everyone at [Prime Digital Academy](http://primeacademy.io)for teaching me the skills I needed to build something like this. Huge thanks especially to [Dane Smith](https://github.com/drhowser), [Kris Szafranski](https://github.com/kdszafranski), and [Edan Schwartz](https://github.com/eschwartz).
 

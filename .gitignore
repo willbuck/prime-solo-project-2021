@@ -6,6 +6,10 @@
 # Build directories for Front-End Assets
 build/
 
+# E2E test run artifacts
+cypress/screenshots/
+cypress/videos/
+
 # Logs
 logs
 *.log
